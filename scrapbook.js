@@ -1,6 +1,23 @@
 // 1. Your Organized Data Lists
 const familyPhotos = [
-{ src: 'images/family1.png', caption: 'The whole crew! ❤️' },
+{ src: 'images/family1.png' },
+   { src: 'images/family1.png' },
+   { src: 'images/family2.png' },
+   { src: 'images/family3.png' },
+   { src: 'images/family4.png' },
+   { src: 'images/family5.png' },
+   { src: 'images/family6.png' },
+   { src: 'images/family7.png' },
+   { src: 'images/family8.png' },
+   { src: 'images/family9.png' },
+   { src: 'images/family10.png' },
+   { src: 'images/family11.png' },
+   { src: 'images/family12.png' },
+   { src: 'images/family13.png' },
+   { src: 'images/family14.png' },
+   { src: 'images/family15.png' },
+   { src: 'images/family16.png' },
+   { src: 'images/family17.png' },
 ];
 
 //const travelPhotos = [
