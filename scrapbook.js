@@ -55,5 +55,5 @@ function renderScrapbook(photoArray, containerId) {
 // 3. Run the engine when the page loads
 document.addEventListener('DOMContentLoaded', () => {
     renderScrapbook(familyPhotos, 'family-gallery');
-    renderScrapbook(travelPhotos, 'travel-gallery');
+   // renderScrapbook(travelPhotos, 'travel-gallery');
 });
