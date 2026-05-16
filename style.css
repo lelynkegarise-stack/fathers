@@ -75,6 +75,16 @@ nav {
     max-width: 800px;
     margin-top: 20px;
 }
+/*========================
+Scrapbook
+====================*/
+.scrapbook-flex {
+    display: flex;        /* Tells the photos to sit side-by-side */
+    flex-wrap: wrap;      /* If they run out of room, they drop to the next row naturally */
+    gap: 30px;            /* Puts nice spacing between the photos */
+    justify-content: center; /* Centers the whole pile on the screen */
+    padding: 20px 0;
+}
 /*============================
 
     MOBILE & RESPONSIVE
