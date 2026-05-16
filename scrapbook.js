@@ -1,14 +1,12 @@
 // 1. Your Organized Data Lists
 const familyPhotos = [
-    { src: 'images/family-christmas.jpg', caption: 'Christmas 2025 🎄' },
-    { src: 'images/family-dinner.jpg', caption: 'Sunday dinner crew' },
-    { src: 'images/family-award.jpg', caption: 'Best Dad Award goes to...' }
+{ src: 'images/family1.png', caption: 'The whole crew! ❤️' },
 ];
 
-const travelPhotos = [
-    { src: 'images/travel-beach.jpg', caption: 'Ocean City Boardwalk 🏖️' },
-    { src: 'images/travel-mountain.jpg', caption: 'Conquering the trails 🥾' }
-];
+//const travelPhotos = [
+   // { src: 'images/travel-beach.jpg', caption: 'Ocean City Boardwalk 🏖️' },
+//{ src: 'images/travel-mountain.jpg', caption: 'Conquering the trails 🥾' }
+//];
 
 // 2. The Automation Engine
 function renderScrapbook(photoArray, containerId) {
