@@ -76,14 +76,61 @@ nav {
     margin-top: 20px;
 }
 /*========================
-Scrapbook
+Scrapbook Layout
 ====================*/
+.scrapbook-bg {
+    background-color: #f5f4f0; /* Soft, warm page color instead of harsh white */
+    padding: 40px 20px;
+}
+
 .scrapbook-flex {
-    display: flex;        /* Tells the photos to sit side-by-side */
-    flex-wrap: wrap;      /* If they run out of room, they drop to the next row naturally */
-    gap: 30px;            /* Puts nice spacing between the photos */
-    justify-content: center; /* Centers the whole pile on the screen */
+    display: flex;           /* Forces boxes to sit side-by-side */
+    flex-wrap: wrap;         /* Allows images to wrap nicely onto multirows */
+    gap: 25px;               /* Clean spacing around every polaroid */
+    justify-content: center; /* Centers the polaroid deck on screen */
     padding: 20px 0;
+}
+
+/* The Polaroid Frames */
+.polaroid {
+    background: white;
+    padding: 12px 12px 25px 12px;
+    box-shadow: 3px 6px 15px rgba(0, 0, 0, 0.12);
+    border-radius: 2px;
+    width: 220px;            /* Locks down the size so they don't blow up */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Constraining the vertical photos */
+.polaroid img {
+    width: 100%;
+    height: 280px;          /* Clean, tall height matching vertical photos */
+    object-fit: cover;      /* Crops photos naturally without squishing them */
+    border: 1px solid #f0f0f0;
+}
+
+.caption {
+    text-align: center;
+    margin-top: 12px;
+    margin-bottom: 0;
+    font-size: 0.95rem;
+    color: #444;
+}
+
+/* Rotations to create the un-stacked scrapbook pile vibe */
+.tilt-left {
+    transform: rotate(-3deg);
+}
+
+.tilt-right {
+    transform: rotate(3deg);
+}
+
+/* Pop photo forward cleanly on hover */
+.polaroid:hover {
+    transform: rotate(0deg) scale(1.05);
+    box-shadow: 5px 12px 22px rgba(0, 0, 0, 0.2);
+    z-index: 10;
 }
 /*============================
 
