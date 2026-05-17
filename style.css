@@ -92,13 +92,30 @@ Scrapbook Layout
 }
 
 /* The Polaroid Frames */
-.polaroid {
-    background: white;
-    padding: 12px 12px 25px 12px;
-    box-shadow: 3px 6px 15px rgba(0, 0, 0, 0.12);
-    border-radius: 2px;
-    width: 220px;            /* Locks down the size so they don't blow up */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* --- Scrapbook Size Variations --- */
+
+/* Small Polaroid */
+.polaroid.size-small {
+    width: 180px;
+}
+.polaroid.size-small img {
+    height: 220px;
+}
+
+/* Medium Polaroid (Our current standard size) */
+.polaroid.size-medium {
+    width: 220px;
+}
+.polaroid.size-medium img {
+    height: 280px;
+}
+
+/* Large Polaroid */
+.polaroid.size-large {
+    width: 260px;
+}
+.polaroid.size-large img {
+    height: 340px;
 }
 
 /* Constraining the vertical photos */
