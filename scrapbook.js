@@ -21,22 +21,32 @@ const familyPhotos = [
 ];
 
 // 2. The Automation Engine
+// The Updated Automation Engine with Size Variations
 function renderScrapbook(photoArray, containerId) {
     const container = document.getElementById(containerId);
-    if (!container) return; // Keeps the code safe if the container doesn't exist
+    if (!container) return;
     
     photoArray.forEach((photo, index) => {
         const polaroidDiv = document.createElement('div');
         polaroidDiv.classList.add('polaroid');
         
-        // Alternate the tilts automatically based on index
+        // 1. Alternate the tilts based on index (even vs odd)
         if (index % 2 === 0) {
             polaroidDiv.classList.add('tilt-left');
         } else {
             polaroidDiv.classList.add('tilt-right');
         }
         
-        // Fallback for undefined captions so they don't print "undefined" on screen
+        // 2. NEW: Cycle through sizes cleanly (Small, Medium, Large)
+        if (index % 3 === 0) {
+            polaroidDiv.classList.add('size-small');
+        } else if (index % 3 === 1) {
+            polaroidDiv.classList.add('size-medium');
+        } else {
+            polaroidDiv.classList.add('size-large');
+        }
+        
+        // Fallback for undefined captions
         const photoCaption = photo.caption || "";
         
         polaroidDiv.innerHTML = `
@@ -47,7 +57,6 @@ function renderScrapbook(photoArray, containerId) {
         container.appendChild(polaroidDiv);
     });
 }
-
 // 3. Run the engine when the page loads
 document.addEventListener('DOMContentLoaded', () => {
     renderScrapbook(familyPhotos, 'family-gallery');
