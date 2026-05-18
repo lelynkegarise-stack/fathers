@@ -1,23 +1,22 @@
 // 1. Your Organized Data Lists
 const familyPhotos = [    
-    { src: 'images/family1.png', caption: '' },
-    { src: 'images/family1.png', caption: '' },
-    { src: 'images/family2.png', caption: '' },
+    { src: 'images/family1.png', caption: 'Family Fun ' },
+    { src: 'images/family2.png', caption: 'Safari' },
     { src: 'images/family3.png', caption: '' },
-    { src: 'images/family4.png', caption: '' },
-    { src: 'images/family5.png', caption: '' },
-    { src: 'images/family6.png', caption: '' },
-    { src: 'images/family7.png', caption: '' },
-    { src: 'images/family8.png', caption: '' },
-    { src: 'images/family9.png', caption: '' },
+    { src: 'images/family4.png', caption: 'Hershey Park' },
+    { src: 'images/family5.png', caption: 'Family Christmas Cards' },
+    { src: 'images/family6.png', caption: 'Easter Shenanigans' },
+    { src: 'images/family7.png', caption: 'Ravens Trip' },
+    { src: 'images/family8.png', caption: 'The Whole Crew' },
+    { src: 'images/family9.png', caption: 'Dinner Dates' },
     { src: 'images/family10.png', caption: '' },
-    { src: 'images/family11.png', caption: '' },
-    { src: 'images/family12.png', caption: '' },
-    { src: 'images/family13.png', caption: '' },
-    { src: 'images/family14.png', caption: '' },
-    { src: 'images/family15.png', caption: '' },
-    { src: 'images/family16.png', caption: '' },
-    { src: 'images/family17.png', caption: '' }
+    { src: 'images/family11.png', caption: 'Ravens Tailgate' },
+    { src: 'images/family12.png', caption: 'Family Support' },
+    { src: 'images/family13.png', caption: 'Mamma' },
+    { src: 'images/family14.png', caption: 'Christmas PJ Party' },
+    { src: 'images/family15.png', caption: 'Family Dinner' },
+    { src: 'images/family16.png', caption: 'Christmas Church 2025' },
+    { src: 'images/family17.png', caption: 'Happy Couple' }
 ];
 function renderScrapbook(photoArray, containerId) {
     const container = document.getElementById(containerId);
