@@ -1,6 +1,5 @@
 // 1. Your Organized Data Lists
-const familyPhotos = [
-    { src: 'images/family1.png', caption: '' },
+const pageOnePhotos = [    { src: 'images/family1.png', caption: '' },
     { src: 'images/family1.png', caption: '' },
     { src: 'images/family2.png', caption: '' },
     { src: 'images/family3.png', caption: '' },
@@ -19,9 +18,6 @@ const familyPhotos = [
     { src: 'images/family16.png', caption: '' },
     { src: 'images/family17.png', caption: '' }
 ];
-
-// 2. The Automation Engine
-// The Updated Automation Engine with Size Variations
 function renderScrapbook(photoArray, containerId) {
     const container = document.getElementById(containerId);
     if (!container) return;
@@ -30,14 +26,14 @@ function renderScrapbook(photoArray, containerId) {
         const polaroidDiv = document.createElement('div');
         polaroidDiv.classList.add('polaroid');
         
-        // 1. Alternate the tilts based on index (even vs odd)
+        // Alternate the tilts based on index
         if (index % 2 === 0) {
             polaroidDiv.classList.add('tilt-left');
         } else {
             polaroidDiv.classList.add('tilt-right');
         }
         
-        // 2. NEW: Cycle through sizes cleanly (Small, Medium, Large)
+        // Cycle through sizes cleanly (Small, Medium, Large)
         if (index % 3 === 0) {
             polaroidDiv.classList.add('size-small');
         } else if (index % 3 === 1) {
@@ -46,7 +42,6 @@ function renderScrapbook(photoArray, containerId) {
             polaroidDiv.classList.add('size-large');
         }
         
-        // Fallback for undefined captions
         const photoCaption = photo.caption || "";
         
         polaroidDiv.innerHTML = `
@@ -57,7 +52,18 @@ function renderScrapbook(photoArray, containerId) {
         container.appendChild(polaroidDiv);
     });
 }
-// 3. Run the engine when the page loads
+
+// 3. The Smart Router: Figures out which page you are looking at
 document.addEventListener('DOMContentLoaded', () => {
-    renderScrapbook(familyPhotos, 'family-gallery');
+    const currentPage = window.location.pathname;
+
+    if (currentPage.includes('family2.html')) {
+        // Grab photos from index 8 to the end for Page 2
+        const pageTwoPhotos = familyPhotos.slice(8);
+        renderScrapbook(pageTwoPhotos, 'family-gallery-p2');
+    } else {
+        // Default to Page 1: Grab the first 8 photos (indexes 0 up to 8)
+        const pageOnePhotos = familyPhotos.slice(0, 8);
+        renderScrapbook(pageOnePhotos, 'family-gallery');
+    }
 });
