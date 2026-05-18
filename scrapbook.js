@@ -60,27 +60,41 @@ const photosPerPage = 8;
 
 // 2. Automatically detect the page or query parameter
 function determineActiveAlbum() {
-    const path = window.location.pathname;
-    const page = path.split("/").pop(); 
+    const urlParams = new URLSearchParams(window.location.search);
+    const tripKey = urlParams.get('trip');
     
-    if (page === "vacation.html") {
-        const urlParams = new URLSearchParams(window.location.search);
-        const tripKey = urlParams.get('trip'); // Grabs "nicaragua", "tennessee", etc.
+    // Find our main page elements
+    const gridContainer = document.querySelector('.preview-grid');
+    const scrapbookContainer = document.querySelector('.scrapbook-section');
+    const paginationContainer = document.querySelector('.pagination');
+
+    // CASE 1: A specific trip key is in the URL (?trip=nicaragua)
+    if (tripKey && allScrapbooks[tripKey.toLowerCase()]) {
+        // Hide the main grid selection if it's on this page
+        if (gridContainer) gridContainer.style.setProperty('display', 'none', 'important');
         
-        if (tripKey && allScrapbooks[tripKey.toLowerCase()]) {
-            activePhotos = allScrapbooks[tripKey.toLowerCase()];
-            
-            // Dynamically change the header text to show the correct place name
-            const heading = document.getElementById('vacation-heading');
-            if (heading) {
-                heading.textContent = `✈️ ${tripKey.charAt(0).toUpperCase() + tripKey.slice(1)} Memories`;
-            }
-        } else {
-            activePhotos = allScrapbooks["vacation"]; // Fallback sample group
+        // Show the scrapbook content and pagination
+        if (scrapbookContainer) scrapbookContainer.style.display = 'block';
+        if (paginationContainer) paginationContainer.style.display = 'flex';
+        
+        activePhotos = allScrapbooks[tripKey.toLowerCase()];
+        
+        // Dynamically change the scrapbook title header
+        const heading = document.getElementById('vacation-heading');
+        if (heading) {
+            heading.textContent = `✈️ ${tripKey.charAt(0).toUpperCase() + tripKey.slice(1)} Memories`;
         }
-    } else {
-        // Fallback for family.html
-        activePhotos = allScrapbooks["family"]; 
+    } 
+    // CASE 2: No trip parameter found (The User is looking at the Hub Dashboard)
+    else {
+        // Force the preview grid to show up using its original grid layout style
+        if (gridContainer) gridContainer.style.setProperty('display', 'grid', 'important');
+        
+        // Hide the empty scrapbook page containers and pagination controls
+        if (scrapbookContainer) scrapbookContainer.style.display = 'none';
+        if (paginationContainer) paginationContainer.style.display = 'none';
+        
+        activePhotos = []; 
     }
 }
 
