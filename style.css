@@ -3,7 +3,7 @@ footer
 **************/
 .footer {
   background: light-grey;
-  color: #ccc;
+  color: #D3D3D3;
   text-align: center;
   padding: 15px 10px;
   font-size: 14px;
@@ -11,13 +11,13 @@ footer
 }
 
 .footer a {
-  color: #ccc;
+  color: #D3D3D3;
   text-decoration: none;
   margin: 0 5px;
 }
 
 .footer a:hover {
-  color: white;
+  color: #D3D3D3;
 }
 /* ==========================
     NAVIGATION BAR
@@ -27,13 +27,13 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 10px 40px;
-    background-color: white;
+    background-color: #D3D3D3;
     position: relative;
     height: auto;
 }
 
 .logo {
-    height: 5px !important;
+    height: 45px !important;
     width: auto !important;
 }
 .menu {
