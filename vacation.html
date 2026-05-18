@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="style.css?v=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="logo1.png">
+  <link rel="apple-touch-icon" href="logo1.png">  
+  <title>Vacation Scrapbook</title>
+</head>
+
+<body>
+
+  <!-- 1. Navbar Container & Fetch Script -->
+  <div id="navbar"></div>
+  <script>
+    fetch("navbar.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("navbar").innerHTML = data;
+      });
+  </script>
+
+  <main class="scrapbook-bg">
+    <section class="scrapbook-section">
+        <!-- The H2 heading will be changed dynamically by JS (e.g., "Nicaragua Memories") -->
+        <h2 id="vacation-heading" class="section-heading">✈️ Vacation Memories</h2>
+        
+        <!-- Reusing your exact layout container ID from your script -->
+        <div id="scrapbook-gallery" class="scrapbook-flex"></div>
+    </section>
+
+    <!-- Pagination: Matching your clean layout system -->
+    <div class="pagination">
+        <button id="prev-btn" class="page-btn" onclick="goToPage(currentPage - 1)">« Previous</button>
+        <span id="page-indicator" class="current-page">Page 1</span>
+        <button id="next-btn" class="page-btn" onclick="goToPage(currentPage + 1)">Next »</button>
+    </div>
+  </main>
+
+  <!-- 3. Footer Container & Fetch Script -->
+  <div id="footer"></div>
+  <script>
+    fetch("footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
+  </script>
+
+  <!-- 4. JavaScript File Links -->
+  <script src="scrapbook.js"></script>
+  <script src="style.js"></script>
+
+</body>
+</html>
