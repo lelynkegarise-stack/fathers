@@ -5,43 +5,41 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link rel="stylesheet" href="style.css?v=1.0">
-<link rel="icon" type="image/png" sizes="32x32" href="logo1.png">
-<link rel="apple-touch-icon" href="logo1.png">  
-  <title>Brads Family</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="logo1.png">
+  <link rel="apple-touch-icon" href="logo1.png">  
+  <title>Dad's Scrapbook - Page 1</title>
 </head>
 
 <body>
 
-  <!-- Navbar -->
-<div id="navbar"></div>
-<script>
+  <!-- 1. Navbar Container & Fetch Script -->
+  <div id="navbar"></div>
+  <script>
+    fetch("navbar.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("navbar").innerHTML = data;
+      });
+  </script>
 
-fetch("navbar.html")
-  .then(response => response.text())
-  .then(data => {
-    document.getElementById("navbar").innerHTML = data;
-  });
+  <!-- 2. Main Scrapbook Content Area -->
+  <main class="scrapbook-bg">
+    <section class="scrapbook-section">
+      <h2 class="section-heading">🏠 Family Memories</h2>
+      
+      <!-- The single photo gallery container JavaScript will fill -->
+      <div id="family-gallery" class="scrapbook-flex"></div>
+    </section>
 
-</script>
- <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dad's Scrapbook</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <!-- Pagination Buttons at the bottom of the grid -->
+    <div class="pagination">
+        <span class="current-page">Page 1</span>
+        <a href="family2.html" class="page-btn">Page 2 »</a>
+    </div>
+  </main>
 
-    <!-- Empty containers that JavaScript will fill with photos -->
-    <main class="scrapbook-bg">
-        <section class="scrapbook-section">
-            <h2 class="section-heading">🏠 Family Memories</h2>
-            <div id="family-gallery" class="scrapbook-flex"></div>
-        </section>
-    <!-- Link your JavaScript file at the very bottom -->
-    <script src="scrapbook.js"></script>
-
-  <!-- Footer -->
+  <!-- 3. Footer Container & Fetch Script -->
   <div id="footer"></div>
-
   <script>
     fetch("footer.html")
       .then(response => response.text())
@@ -49,6 +47,10 @@ fetch("navbar.html")
         document.getElementById("footer").innerHTML = data;
       });
   </script>
-<script src="style.js"></script>
+
+  <!-- 4. Global JavaScript File Links -->
+  <script src="scrapbook.js"></script>
+  <script src="style.js"></script>
+
 </body>
 </html>
