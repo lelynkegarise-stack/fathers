@@ -104,6 +104,15 @@ Scrapbook Layout
 }
 
 /* The Polaroid Frames */
+.polaroid {
+    background-color: #ffffff;
+    padding: 15px 15px 25px 15px; /* Thicker padding at the bottom for the caption */
+    box-shadow: 3px 6px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e4e4e4;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Makes the hover effect silky smooth */
+    display: flex;
+    flex-direction: column;
+}
 /* Small Polaroid */
 .polaroid.size-small {
     width: 180px;
