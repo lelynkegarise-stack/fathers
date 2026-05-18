@@ -64,6 +64,151 @@ let currentPage = 1;
 const photosPerPage = 8;
 
 // ==========================================
+// 3. PAGE DETECTION AND ROUTING LOGIC
+// ==========================================
+function determineActiveAlbum() {
+    const path = window.location.pathname;
+    const page = path.split("/").pop(); // Gets filename like "family.html" or "vacation.html"
+    
+    const gridContainer = document.querySelector('.preview-grid');
+    const scrapbookContainer = document.querySelector('.scrapbook-section');
+    const paginationContainer = document.getElementById('pagination-controls');
+
+    // ROUTE A: The user is looking at family.html
+    if (page === "family.html") {
+        activePhotos = allScrapbooks["family"];
+        // Ensure scrapbook layout is completely visible on your dedicated family page
+        if (scrapbookContainer) scrapbookContainer.style.display = 'block';
+        if (paginationContainer) paginationContainer.style.display = 'flex';
+        if (gridContainer) gridContainer.style.display = 'none';
+        return; 
+    }
+
+    // ROUTE B: The user is on vacation.html
+    if (page === "vacation.html") {
+        const urlParams = new URLSearchParams(window.location.search);
+        const tripKey = urlParams.get('trip');
+
+        if (tripKey && allScrapbooks[tripKey.toLowerCase()]) {
+            // A trip option was clicked! Hide hub choices, show album gallery
+            if (gridContainer) gridContainer.style.display = 'none';
+            if (scrapbookContainer) scrapbookContainer.style.display = 'block';
+            if (paginationContainer) paginationContainer.style.display = 'flex';
+            
+            activePhotos = allScrapbooks[tripKey.toLowerCase()];
+            currentPage = 1;
+            
+            const heading = document.getElementById('vacation-heading');
+            if (heading) {
+                heading.textContent = `✈️ ${tripKey.charAt(0).toUpperCase() + tripKey.slice(1)} Memories`;
+            }
+        } else {
+            // Dashboard Mode: Show trip choices, hide empty album frames
+            if (gridContainer) gridContainer.style.display = 'grid';
+            if (scrapbookContainer) scrapbookContainer.style.display = 'none';
+            if (paginationContainer) paginationContainer.style.display = 'none';
+            activePhotos = [];
+        }
+    }
+}
+
+// ==========================================
+// 4. THE AUTOMATED PICTURE LAYOUT ENGINE
+// ==========================================
+function renderScrapbook() {
+    const container = document.getElementById('scrapbook-gallery');
+    if (!container || activePhotos.length === 0) return; 
+    
+    container.innerHTML = "";
+    
+    const startIndex = (currentPage - 1) * photosPerPage;
+    const endIndex = startIndex + photosPerPage;
+    const photosToDisplay = activePhotos.slice(startIndex, endIndex);
+    
+    photosToDisplay.forEach((photo, index) => {
+        const polaroidDiv = document.createElement('div');
+        polaroidDiv.classList.add('polaroid');
+        
+        if (index % 2 === 0) polaroidDiv.classList.add('tilt-left');
+        else polaroidDiv.classList.add('tilt-right');
+        
+        if (index % 3 === 0) polaroidDiv.classList.add('size-small');
+        else if (index % 3 === 1) polaroidDiv.classList.add('size-medium');
+        else polaroidDiv.classList.add('size-large');
+        
+        const photoCaption = photo.caption || "";
+        
+        polaroidDiv.innerHTML = `
+            <img src="${photo.src}" alt="Scrapbook photo">
+            <p class="caption">${photoCaption}</p>
+        `;
+        
+        container.appendChild(polaroidDiv);
+    });
+
+    updatePaginationControls();
+}
+
+// ==========================================
+// 5. INTERFACE CONTROLS
+// ==========================================
+function updatePaginationControls() {
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const pageIndicator = document.getElementById('page-indicator');
+    
+    if (!prevBtn || !nextBtn || !pageIndicator) return;
+
+    pageIndicator.textContent = `Page ${currentPage}`;
+    prevBtn.disabled = (currentPage === 1);
+    
+    const maxPages = Math.ceil(activePhotos.length / photosPerPage);
+    nextBtn.disabled = (currentPage === maxPages || maxPages === 0);
+}
+
+function goToPage(pageNumber) {
+    currentPage = pageNumber;
+    renderScrapbook();
+    const scrapbookSec = document.querySelector('.scrapbook-section');
+    if (scrapbookSec) scrapbookSec.scrollIntoView({ behavior: 'smooth' });
+}
+
+// ==========================================
+// 6. INITIAL APPLICATION LOAD
+// ==========================================
+document.addEventListener('DOMContentLoaded', () => {
+    determineActiveAlbum(); 
+    renderScrapbook();     
+});        { src: 'images/nicaragua15.png', caption: '' },
+        { src: 'images/nicaragua16.png', caption: '' },
+        { src: 'images/nicaragua17.png', caption: '' },
+        { src: 'images/nicaragua18.png', caption: '' },
+        { src: 'images/nicaragua19.png', caption: '' },
+        { src: 'images/nicaragua20.png', caption: '' },
+        { src: 'images/nicaragua21.png', caption: '' },
+        { src: 'images/nicaragua22.png', caption: '' },
+        { src: 'images/nicaragua23.png', caption: '' },
+        { src: 'images/nicaragua24.png', caption: '' },
+        { src: 'images/nicaragua25.png', caption: '' },
+        { src: 'images/nicaragua26.png', caption: '' },
+        { src: 'images/nicaragua27.png', caption: '' }
+    ],
+    "vacation": [
+        { src: 'images/mountain1.png', caption: 'Morning Hike' },
+        { src: 'images/mountain2.png', caption: 'Cabin View' },
+        { src: 'images/beach1.png', caption: 'Sunset Walks' },
+        { src: 'images/beach2.png', caption: 'Seafood Dinner' }
+    ]
+};
+
+// ==========================================
+// 2. TRACK GLOBAL STATES DYNAMICALLY
+// ==========================================
+let activePhotos = [];
+let currentPage = 1;
+const photosPerPage = 8;
+
+// ==========================================
 // 3. AUTOMATICALLY DETECT PAGE / QUERY ENGINE
 // ==========================================
 function determineActiveAlbum() {
