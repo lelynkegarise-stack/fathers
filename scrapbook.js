@@ -61,7 +61,7 @@ const allScrapbooks = {
 // ==========================================
 let activePhotos = [];
 let currentPage = 1;
-const photosPerPage = 8;
+const photosPerPage = 10;
 
 // ==========================================
 // 3. PAGE DETECTION AND ROUTING LOGIC
