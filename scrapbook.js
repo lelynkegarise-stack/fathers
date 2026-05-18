@@ -1,5 +1,6 @@
 // 1. Your Organized Data Lists
-const pageOnePhotos = [    { src: 'images/family1.png', caption: '' },
+const familyPhotos = [    
+    { src: 'images/family1.png', caption: '' },
     { src: 'images/family1.png', caption: '' },
     { src: 'images/family2.png', caption: '' },
     { src: 'images/family3.png', caption: '' },
