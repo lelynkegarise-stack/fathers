@@ -61,26 +61,30 @@ const photosPerPage = 8;
 // 2. Automatically detect the page or query parameter
 function determineActiveAlbum() {
     const urlParams = new URLSearchParams(window.location.search);
-    const tripKey = urlParams.get('trip');
+    const tripKey = urlParams.get('trip'); // Grabs "nicaragua", "tennessee", etc.
     
+    // Find our main page elements
     const gridContainer = document.querySelector('.preview-grid');
     const scrapbookContainer = document.querySelector('.scrapbook-section');
     const paginationContainer = document.getElementById('pagination-controls');
 
+    // STRICT CHECK: Only load the scrapbook if 'trip' exists AND matches a key in our database
     if (tripKey && allScrapbooks[tripKey.toLowerCase()]) {
-        // A trip was clicked: Show album, hide grid
+        // A trip was clicked! Hide the hub grid, show the scrapbook components
         if (gridContainer) gridContainer.style.display = 'none';
         if (scrapbookContainer) scrapbookContainer.style.display = 'block';
         if (paginationContainer) paginationContainer.style.display = 'flex';
         
         activePhotos = allScrapbooks[tripKey.toLowerCase()];
+        currentPage = 1; // Always reset to page 1 on a new trip
         
+        // Dynamically change the header text to show the correct place name
         const heading = document.getElementById('vacation-heading');
         if (heading) {
             heading.textContent = `✈️ ${tripKey.charAt(0).toUpperCase() + tripKey.slice(1)} Memories`;
         }
     } else {
-        // Default dashboard: Show grid, hide album elements
+        // No trip selected! Force the hub grid to show, completely hide scrapbook elements
         if (gridContainer) gridContainer.style.display = 'grid';
         if (scrapbookContainer) scrapbookContainer.style.display = 'none';
         if (paginationContainer) paginationContainer.style.display = 'none';
@@ -89,6 +93,69 @@ function determineActiveAlbum() {
     }
 }
 
+// 3. Your Single, Clean Automation Engine
+function renderScrapbook() {
+    const container = document.getElementById('scrapbook-gallery');
+    if (!container || activePhotos.length === 0) return; // Don't run if no photos loaded
+    
+    container.innerHTML = "";
+    
+    const startIndex = (currentPage - 1) * photosPerPage;
+    const endIndex = startIndex + photosPerPage;
+    const photosToDisplay = activePhotos.slice(startIndex, endIndex);
+    
+    photosToDisplay.forEach((photo, index) => {
+        const polaroidDiv = document.createElement('div');
+        polaroidDiv.classList.add('polaroid');
+        
+        // Alternate tilts
+        if (index % 2 === 0) polaroidDiv.classList.add('tilt-left');
+        else polaroidDiv.classList.add('tilt-right');
+        
+        // Cycle sizes
+        if (index % 3 === 0) polaroidDiv.classList.add('size-small');
+        else if (index % 3 === 1) polaroidDiv.classList.add('size-medium');
+        else polaroidDiv.classList.add('size-large');
+        
+        const photoCaption = photo.caption || "";
+        
+        polaroidDiv.innerHTML = `
+            <img src="${photo.src}" alt="Scrapbook photo">
+            <p class="caption">${photoCaption}</p>
+        `;
+        
+        container.appendChild(polaroidDiv);
+    });
+
+    updatePaginationControls();
+}
+
+function updatePaginationControls() {
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const pageIndicator = document.getElementById('page-indicator');
+    
+    if (!prevBtn || !nextBtn || !pageIndicator) return;
+
+    pageIndicator.textContent = `Page ${currentPage}`;
+    prevBtn.disabled = (currentPage === 1);
+    
+    const maxPages = Math.ceil(activePhotos.length / photosPerPage);
+    nextBtn.disabled = (currentPage === maxPages || maxPages === 0);
+}
+
+function goToPage(pageNumber) {
+    currentPage = pageNumber;
+    renderScrapbook();
+    const scrapbookSec = document.querySelector('.scrapbook-section');
+    if (scrapbookSec) scrapbookSec.scrollIntoView({ behavior: 'smooth' });
+}
+
+// 4. Initial Load Execution
+document.addEventListener('DOMContentLoaded', () => {
+    determineActiveAlbum(); 
+    renderScrapbook();     
+});
 // 3. Your Single, Clean Automation Engine
 function renderScrapbook() {
     const container = document.getElementById('scrapbook-gallery');
@@ -124,20 +191,6 @@ function renderScrapbook() {
     });
 
     updatePaginationControls();
-}
-
-function updatePaginationControls() {
-    document.getElementById('page-indicator').textContent = `Page ${currentPage}`;
-    document.getElementById('prev-btn').disabled = (currentPage === 1);
-    
-    const maxPages = Math.ceil(activePhotos.length / photosPerPage);
-    document.getElementById('next-btn').disabled = (currentPage === maxPages || maxPages === 0);
-}
-
-function goToPage(pageNumber) {
-    currentPage = pageNumber;
-    renderScrapbook();
-    document.querySelector('.scrapbook-section').scrollIntoView({ behavior: 'smooth' });
 }
 
 // 4. Initial Load
