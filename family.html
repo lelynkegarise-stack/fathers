@@ -22,21 +22,22 @@
       });
   </script>
 
-  <!-- 2. Main Scrapbook Content Area -->
-  <main class="scrapbook-bg">
+ <!-- Inside your single family.html file -->
+<main class="scrapbook-bg">
     <section class="scrapbook-section">
-      <h2 class="section-heading">🏠 Family Memories</h2>
-      
-      <!-- The single photo gallery container JavaScript will fill -->
-      <div id="family-gallery" class="scrapbook-flex"></div>
+        <h2 class="section-heading">🏠 Family Memories</h2>
+        
+        <!-- This stays the same -->
+        <div id="family-gallery" class="scrapbook-flex"></div>
     </section>
 
-    <!-- Pagination Buttons at the bottom of the grid -->
+    <!-- UPDATED PAGINATION: Buttons that trigger JS functions -->
     <div class="pagination">
-        <span class="current-page">Page 1</span>
-        <a href="family2.html" class="page-btn">Page 2 »</a>
+        <button id="prev-btn" class="page-btn" onclick="goToPage(1)">« Page 1</button>
+        <span id="page-indicator" class="current-page">Page 1</span>
+        <button id="next-btn" class="page-btn" onclick="goToPage(2)">Page 2 »</button>
     </div>
-  </main>
+</main>
 
   <!-- 3. Footer Container & Fetch Script -->
   <div id="footer"></div>
