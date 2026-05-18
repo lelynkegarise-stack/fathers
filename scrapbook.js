@@ -2,9 +2,9 @@
 const familyPhotos = [    
     { src: 'images/family1.png', caption: 'Family Fun ' },
     { src: 'images/family2.png', caption: 'Safari' },
-    { src: 'images/family3.png', caption: '' },
+    //{ src: 'images/family3.png', caption: '' },
     { src: 'images/family4.png', caption: 'Hershey Park' },
-    { src: 'images/family5.png', caption: 'Family Christmas Cards' },
+   // { src: 'images/family5.png', caption: 'Family Christmas Cards' },
     { src: 'images/family6.png', caption: 'Easter Shenanigans' },
     { src: 'images/family7.png', caption: 'Ravens Trip' },
     { src: 'images/family8.png', caption: 'The Whole Crew' },
