@@ -1,4 +1,3 @@
-// 1. The Global Scrapbook Database
 const allScrapbooks = {
     "family": [    
         { src: 'images/family1.png', caption: 'Family Fun ' },
@@ -17,7 +16,7 @@ const allScrapbooks = {
         { src: 'images/family16.png', caption: 'Christmas Church 2025' },
         { src: 'images/family17.png', caption: 'Happy Couple' }
     ],
-    "Nicaragua":[
+    "nicaragua": [ // Changed to lowercase to perfectly match "?trip=nicaragua"
         { src: 'images/nicaragua1.png', caption: '' },
         { src: 'images/nicaragua2.png', caption: '' },
         { src: 'images/nicaragua3.png', caption: '' },
@@ -35,6 +34,112 @@ const allScrapbooks = {
         { src: 'images/nicaragua15.png', caption: '' },
         { src: 'images/nicaragua16.png', caption: '' },
         { src: 'images/nicaragua17.png', caption: '' },
+        { src: 'images/nicaragua18.png', caption: '' },
+        { src: 'images/nicaragua19.png', caption: '' },
+        { src: 'images/nicaragua20.png', caption: '' },
+        { src: 'images/nicaragua21.png', caption: '' },
+        { src: 'images/nicaragua22.png', caption: '' },
+        { src: 'images/nicaragua23.png', caption: '' },
+        { src: 'images/nicaragua24.png', caption: '' },
+        { src: 'images/nicaragua25.png', caption: '' },
+        { src: 'images/nicaragua26.png', caption: '' },
+        { src: 'images/nicaragua27.png', caption: '' }
+    ],
+    "vacation": [
+        { src: 'images/mountain1.png', caption: 'Morning Hike' },
+        { src: 'images/mountain2.png', caption: 'Cabin View' },
+        { src: 'images/beach1.png', caption: 'Sunset Walks' },
+        { src: 'images/beach2.png', caption: 'Seafood Dinner' }
+    ]
+};
+
+// Track global states dynamically
+let activePhotos = [];
+let currentPage = 1;
+const photosPerPage = 8;
+
+// 2. Automatically detect the page or query parameter
+function determineActiveAlbum() {
+    const path = window.location.pathname;
+    const page = path.split("/").pop(); 
+    
+    if (page === "vacation.html") {
+        const urlParams = new URLSearchParams(window.location.search);
+        const tripKey = urlParams.get('trip'); // Grabs "nicaragua", "tennessee", etc.
+        
+        if (tripKey && allScrapbooks[tripKey.toLowerCase()]) {
+            activePhotos = allScrapbooks[tripKey.toLowerCase()];
+            
+            // Dynamically change the header text to show the correct place name
+            const heading = document.getElementById('vacation-heading');
+            if (heading) {
+                heading.textContent = `✈️ ${tripKey.charAt(0).toUpperCase() + tripKey.slice(1)} Memories`;
+            }
+        } else {
+            activePhotos = allScrapbooks["vacation"]; // Fallback sample group
+        }
+    } else {
+        // Fallback for family.html
+        activePhotos = allScrapbooks["family"]; 
+    }
+}
+
+// 3. Your Single, Clean Automation Engine
+function renderScrapbook() {
+    const container = document.getElementById('scrapbook-gallery');
+    if (!container) return;
+    
+    container.innerHTML = "";
+    
+    const startIndex = (currentPage - 1) * photosPerPage;
+    const endIndex = startIndex + photosPerPage;
+    const photosToDisplay = activePhotos.slice(startIndex, endIndex);
+    
+    photosToDisplay.forEach((photo, index) => {
+        const polaroidDiv = document.createElement('div');
+        polaroidDiv.classList.add('polaroid');
+        
+        // Alternate tilts
+        if (index % 2 === 0) polaroidDiv.classList.add('tilt-left');
+        else polaroidDiv.classList.add('tilt-right');
+        
+        // Cycle sizes
+        if (index % 3 === 0) polaroidDiv.classList.add('size-small');
+        else if (index % 3 === 1) polaroidDiv.classList.add('size-medium');
+        else polaroidDiv.classList.add('size-large');
+        
+        const photoCaption = photo.caption || "";
+        
+        polaroidDiv.innerHTML = `
+            <img src="${photo.src}" alt="Scrapbook photo">
+            <p class="caption">${photoCaption}</p>
+        `;
+        
+        container.appendChild(polaroidDiv);
+    });
+
+    updatePaginationControls();
+}
+
+function updatePaginationControls() {
+    document.getElementById('page-indicator').textContent = `Page ${currentPage}`;
+    document.getElementById('prev-btn').disabled = (currentPage === 1);
+    
+    const maxPages = Math.ceil(activePhotos.length / photosPerPage);
+    document.getElementById('next-btn').disabled = (currentPage === maxPages || maxPages === 0);
+}
+
+function goToPage(pageNumber) {
+    currentPage = pageNumber;
+    renderScrapbook();
+    document.querySelector('.scrapbook-section').scrollIntoView({ behavior: 'smooth' });
+}
+
+// 4. Initial Load
+document.addEventListener('DOMContentLoaded', () => {
+    determineActiveAlbum(); 
+    renderScrapbook();     
+});        { src: 'images/nicaragua17.png', caption: '' },
         { src: 'images/nicaragua18.png', caption: '' },
         { src: 'images/nicaragua19.png', caption: '' },
         { src: 'images/nicaragua20.png', caption: '' },
