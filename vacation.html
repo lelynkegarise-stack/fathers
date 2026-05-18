@@ -1,40 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <link rel="stylesheet" href="style.css?v=1.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="logo1.png">
-  <link rel="apple-touch-icon" href="logo1.png">  
-  <title>Vacation Scrapbook</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Vacation Hub</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-  <!-- 1. Navbar Container & Fetch Script -->
-  <div id="navbar"></div>
-  <script>
-    fetch("navbar.html")
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("navbar").innerHTML = data;
-      });
-  </script>
+    <header>
+        <h1>Our Travel Adventures</h1>
+        <p>Click a destination to open the scrapbook</p>
+    </header>
 
-  <main class="scrapbook-bg">
-    <section class="scrapbook-section">
-        <!-- The H2 heading will be changed dynamically by JS (e.g., "Nicaragua Memories") -->
-        <h2 id="vacation-heading" class="section-heading">✈️ Vacation Memories</h2>
-        
-        <!-- Reusing your exact layout container ID from your script -->
+    <!-- 1. THE HUB GRID (Shows when no trip is clicked) -->
+    <main class="preview-grid">
+        <!-- Preview Card 1: Tennessee -->
+        <a href="./vacation.html?trip=tennessee" class="preview-card">
+            <div class="card-image" style="background-image: url('images/mountains-thumb.jpg');"></div>
+            <div class="card-info">
+                <h2>Tennessee</h2>
+                <p>Mountain Getaways</p>
+            </div>
+        </a>
+
+        <!-- Preview Card 2: Cabo -->
+        <a href="./vacation.html?trip=cabo" class="preview-card">
+            <div class="card-image" style="background-image: url('images/beach-thumb.jpg');"></div>
+            <div class="card-info">
+                <h2>Cabo</h2>
+                <p>Sun & Sand</p>
+            </div>
+        </a>
+
+        <!-- Preview Card 3: Alaska -->
+        <a href="./vacation.html?trip=alaska" class="preview-card">
+            <div class="card-image" style="background-image: url('images/beach-thumb.jpg');"></div>
+            <div class="card-info">
+                <h2>Alaska</h2>
+                <p>Glaciers & Wildlife</p>
+            </div>
+        </a>
+
+        <!-- Preview Card 4: Nicaragua -->
+        <a href="./vacation.html?trip=nicaragua" class="preview-card">
+            <div class="card-image" style="background-image: url('images/nicaragua1.png');"></div>
+            <div class="card-info">
+                <h2>Nicaragua</h2>
+                <p>Tropical Escape</p>
+            </div>
+        </a>
+
+        <!-- Preview Card 5: Florida -->
+        <a href="./vacation.html?trip=florida" class="preview-card">
+            <div class="card-image" style="background-image: url('images/beach-thumb.jpg');"></div>
+            <div class="card-info">
+                <h2>Florida</h2>
+                <p>Sunshine State Fun</p>
+            </div>
+        </a>
+
+        <!-- Preview Card 6: New York -->
+        <a href="./vacation.html?trip=new-york" class="preview-card">
+            <div class="card-image" style="background-image: url('images/beach-thumb.jpg');"></div>
+            <div class="card-info">
+                <h2>New York</h2>
+                <p>City Lights & Exploring</p>
+            </div>
+        </a>
+
+        <!-- Preview Card 7: Italy & Greece -->
+        <a href="./vacation.html?trip=italy-greece" class="preview-card">
+            <div class="card-image" style="background-image: url('images/beach-thumb.jpg');"></div>
+            <div class="card-info">
+                <h2>Italy & Greece</h2>
+                <p>Historic Adventures</p>
+            </div>
+        </a>
+
+        <!-- Preview Card 8: Beach -->
+        <a href="./vacation.html?trip=general-beach" class="preview-card">
+            <div class="card-image" style="background-image: url('images/beach-thumb.jpg');"></div>
+            <div class="card-info">
+                <h2>Beach</h2>
+                <p>Relaxing by the Coast</p>
+            </div>
+        </a>
+    </main>
+
+    <!-- 2. THE SCRAPBOOK SECTION (Hidden until a card is clicked) -->
+    <section class="scrapbook-section" style="display: none;">
+        <h2 id="vacation-heading" style="text-align: center; color: #2c3e50;">✈️ Vacation Memories</h2>
         <div id="scrapbook-gallery" class="scrapbook-flex"></div>
+        
+        <!-- 3. PAGINATION CONTROLS -->
+        <div class="pagination" id="pagination-controls" style="display: none;">
+            <button id="prev-btn" class="page-btn" onclick="goToPage(currentPage - 1)">« Previous</button>
+            <span id="page-indicator" class="current-page">Page 1</span>
+            <button id="next-btn" class="page-btn" onclick="goToPage(currentPage + 1)">Next »</button>
+        </div>
+        
+        <!-- Back Button to get back to the preview choices easily -->
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="./vacation.html" class="page-btn" style="text-decoration: none; display: inline-block;">← Back to All Trips</a>
+        </div>
     </section>
 
-    <!-- Pagination: Matching your clean layout system -->
-    <div class="pagination">
-        <button id="prev-btn" class="page-btn" onclick="goToPage(currentPage - 1)">« Previous</button>
-        <span id="page-indicator" class="current-page">Page 1</span>
+    <!-- Link your JS file at the bottom -->
+    <script src="scrapbook.js"></script>
+</body>
+</html>        <span id="page-indicator" class="current-page">Page 1</span>
         <button id="next-btn" class="page-btn" onclick="goToPage(currentPage + 1)">Next »</button>
     </div>
   </main>
