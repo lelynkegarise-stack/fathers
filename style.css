@@ -32,9 +32,15 @@ nav {
     height: auto;
 }
 
-.logo {
-    height: 45px !important;
+logo {
+    height: auto !important;
     width: auto !important;
+}
+
+.logo img {
+    height: 45px !important;  
+    width: auto !important;    
+    display: block;            
 }
 .menu {
     list-style: none !important;
