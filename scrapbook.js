@@ -1,46 +1,52 @@
-// 1. Your Organized Data Lists
-const familyPhotos = [    
-    { src: 'images/family1.png', caption: 'Family Fun ' },
-    { src: 'images/family2.png', caption: 'Safari' },
-    //{ src: 'images/family3.png', caption: '' },
-    { src: 'images/family4.png', caption: 'Hershey Park' },
-   // { src: 'images/family5.png', caption: 'Family Christmas Cards' },
-    { src: 'images/family6.png', caption: 'Easter Shenanigans' },
-    { src: 'images/family7.png', caption: 'Ravens Trip' },
-    { src: 'images/family8.png', caption: 'The Whole Crew' },
-    { src: 'images/family9.png', caption: 'Dinner Dates' },
-    { src: 'images/family10.png', caption: '' },
-    { src: 'images/family11.png', caption: 'Ravens Tailgate' },
-    { src: 'images/family12.png', caption: 'Family Support' },
-    { src: 'images/family13.png', caption: 'Mamma' },
-    { src: 'images/family14.png', caption: 'Christmas PJ Party' },
-    { src: 'images/family15.png', caption: 'Family Dinner' },
-    { src: 'images/family16.png', caption: 'Christmas Church 2025' },
-    { src: 'images/family17.png', caption: 'Happy Couple' }
+// 1. Your Photo Data List
+const familyPhotos = [    
+    { src: 'images/family1.png', caption: 'Family Fun ' },
+    { src: 'images/family2.png', caption: 'Safari' },
+    { src: 'images/family4.png', caption: 'Hershey Park' },
+    { src: 'images/family6.png', caption: 'Easter Shenanigans' },
+    { src: 'images/family7.png', caption: 'Ravens Trip' },
+    { src: 'images/family8.png', caption: 'The Whole Crew' },
+    { src: 'images/family9.png', caption: 'Dinner Dates' },
+    { src: 'images/family10.png', caption: '' },
+    // --- Page 2 Photos ---
+    { src: 'images/family11.png', caption: 'Ravens Tailgate' },
+    { src: 'images/family12.png', caption: 'Family Support' },
+    { src: 'images/family13.png', caption: 'Mamma' },
+    { src: 'images/family14.png', caption: 'Christmas PJ Party' },
+    { src: 'images/family15.png', caption: 'Family Dinner' },
+    { src: 'images/family16.png', caption: 'Christmas Church 2025' },
+    { src: 'images/family17.png', caption: 'Happy Couple' }
 ];
-function renderScrapbook(photoArray, containerId) {
-    const container = document.getElementById(containerId);
+
+// Track the current page state
+let currentPage = 1;
+const photosPerPage = 8;
+
+// 2. The Automation Engine
+function renderScrapbook() {
+    const container = document.getElementById('family-gallery');
     if (!container) return;
     
-    photoArray.forEach((photo, index) => {
+    // Clear out any old polaroids before rendering new ones
+    container.innerHTML = "";
+    
+    // Calculate exactly which photos to show based on current page
+    const startIndex = (currentPage - 1) * photosPerPage;
+    const endIndex = startIndex + photosPerPage;
+    const photosToDisplay = familyPhotos.slice(startIndex, endIndex);
+    
+    photosToDisplay.forEach((photo, index) => {
         const polaroidDiv = document.createElement('div');
         polaroidDiv.classList.add('polaroid');
         
-        // Alternate the tilts based on index
-        if (index % 2 === 0) {
-            polaroidDiv.classList.add('tilt-left');
-        } else {
-            polaroidDiv.classList.add('tilt-right');
-        }
+        // Alternate tilts
+        if (index % 2 === 0) polaroidDiv.classList.add('tilt-left');
+        else polaroidDiv.classList.add('tilt-right');
         
-        // Cycle through sizes cleanly (Small, Medium, Large)
-        if (index % 3 === 0) {
-            polaroidDiv.classList.add('size-small');
-        } else if (index % 3 === 1) {
-            polaroidDiv.classList.add('size-medium');
-        } else {
-            polaroidDiv.classList.add('size-large');
-        }
+        // Cycle sizes
+        if (index % 3 === 0) polaroidDiv.classList.add('size-small');
+        else if (index % 3 === 1) polaroidDiv.classList.add('size-medium');
+        else polaroidDiv.classList.add('size-large');
         
         const photoCaption = photo.caption || "";
         
@@ -51,19 +57,33 @@ function renderScrapbook(photoArray, containerId) {
         
         container.appendChild(polaroidDiv);
     });
+
+    // Update the buttons and text layout at the bottom
+    updatePaginationControls();
 }
 
-// 3. The Smart Router: Figures out which page you are looking at
-document.addEventListener('DOMContentLoaded', () => {
-    const currentPage = window.location.pathname;
+// 3. Update UI Controls (disables buttons if you hit the ends)
+function updatePaginationControls() {
+    document.getElementById('page-indicator').textContent = `Page ${currentPage}`;
+    
+    // Disable "Previous" button if on page 1
+    document.getElementById('prev-btn').disabled = (currentPage === 1);
+    
+    // Disable "Next" button if there are no more photos left to show
+    const maxPages = Math.ceil(familyPhotos.length / photosPerPage);
+    document.getElementById('next-btn').disabled = (currentPage === maxPages);
+}
 
-    if (currentPage.includes('family2.html')) {
-        // Grab photos from index 8 to the end for Page 2
-        const pageTwoPhotos = familyPhotos.slice(8);
-        renderScrapbook(pageTwoPhotos, 'family-gallery-p2');
-    } else {
-        // Default to Page 1: Grab the first 8 photos (indexes 0 up to 8)
-        const pageOnePhotos = familyPhotos.slice(0, 8);
-        renderScrapbook(pageOnePhotos, 'family-gallery');
-    }
+// 4. Function called when clicking the page buttons
+function goToPage(pageNumber) {
+    currentPage = pageNumber;
+    renderScrapbook();
+    
+    // Smoothly scroll back to top of the scrapbook section so dad doesn't have to scroll up manually
+    document.querySelector('.scrapbook-section').scrollIntoView({ behavior: 'smooth' });
+}
+
+// 5. Initial Load
+document.addEventListener('DOMContentLoaded', () => {
+    renderScrapbook();
 });
