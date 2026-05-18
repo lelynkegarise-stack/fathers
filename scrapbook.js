@@ -1,40 +1,103 @@
-// 1. Your Photo Data List
-const familyPhotos = [    
-    { src: 'images/family1.png', caption: 'Family Fun ' },
-    { src: 'images/family2.png', caption: 'Safari' },
-    { src: 'images/family4.png', caption: 'Hershey Park' },
-    { src: 'images/family6.png', caption: 'Easter Shenanigans' },
-    { src: 'images/family7.png', caption: 'Ravens Trip' },
-    { src: 'images/family8.png', caption: 'The Whole Crew' },
-    { src: 'images/family9.png', caption: 'Dinner Dates' },
-    { src: 'images/family10.png', caption: '' },
-    // --- Page 2 Photos ---
-    { src: 'images/family11.png', caption: 'Ravens Tailgate' },
-    { src: 'images/family12.png', caption: 'Family Support' },
-    { src: 'images/family13.png', caption: 'Mamma' },
-    { src: 'images/family14.png', caption: 'Christmas PJ Party' },
-    { src: 'images/family15.png', caption: 'Family Dinner' },
-    { src: 'images/family16.png', caption: 'Christmas Church 2025' },
-    { src: 'images/family17.png', caption: 'Happy Couple' }
-];
+// 1. The Global Scrapbook Database
+const allScrapbooks = {
+    "family": [    
+        { src: 'images/family1.png', caption: 'Family Fun ' },
+        { src: 'images/family2.png', caption: 'Safari' },
+        { src: 'images/family4.png', caption: 'Hershey Park' },
+        { src: 'images/family6.png', caption: 'Easter Shenanigans' },
+        { src: 'images/family7.png', caption: 'Ravens Trip' },
+        { src: 'images/family8.png', caption: 'The Whole Crew' },
+        { src: 'images/family9.png', caption: 'Dinner Dates' },
+        { src: 'images/family10.png', caption: '' },
+        { src: 'images/family11.png', caption: 'Ravens Tailgate' },
+        { src: 'images/family12.png', caption: 'Family Support' },
+        { src: 'images/family13.png', caption: 'Mamma' },
+        { src: 'images/family14.png', caption: 'Christmas PJ Party' },
+        { src: 'images/family15.png', caption: 'Family Dinner' },
+        { src: 'images/family16.png', caption: 'Christmas Church 2025' },
+        { src: 'images/family17.png', caption: 'Happy Couple' }
+    ],
+    "vacation": [
+        { src: 'images/mountain1.png', caption: 'Morning Hike' },
+        { src: 'images/mountain2.png', caption: 'Cabin View' },
+        { src: 'images/beach1.png', caption: 'Sunset Walks' },
+        { src: 'images/beach2.png', caption: 'Seafood Dinner' }
+    ]
+};
 
-// Track the current page state
+// Track global states dynamically
+let activePhotos = [];
 let currentPage = 1;
 const photosPerPage = 8;
 
-// 2. The Automation Engine
+// 2. Automatically detect the page based on the HTML filename
+function determineActiveAlbum() {
+    const path = window.location.pathname;
+    const page = path.split("/").pop(); // Gets just the filename, like "family.html"
+    
+    if (page === "vacation.html") {
+        activePhotos = allScrapbooks["vacation"];
+    } else {
+        // Default fallback to family photos if on family.html or index.html
+        activePhotos = allScrapbooks["family"]; 
+    }
+}
+
+// 3. Your Automation Engine
 function renderScrapbook() {
-    const container = document.getElementById('family-gallery');
+    // Look for a generic gallery ID that you can use on BOTH pages
+    const container = document.getElementById('scrapbook-gallery');
     if (!container) return;
     
-    // Clear out any old polaroids before rendering new ones
     container.innerHTML = "";
     
-    // Calculate exactly which photos to show based on current page
     const startIndex = (currentPage - 1) * photosPerPage;
     const endIndex = startIndex + photosPerPage;
-    const photosToDisplay = familyPhotos.slice(startIndex, endIndex);
+    const photosToDisplay = activePhotos.slice(startIndex, endIndex);
     
+    photosToDisplay.forEach((photo, index) => {
+        const polaroidDiv = document.createElement('div');
+        polaroidDiv.classList.add('polaroid');
+        
+        if (index % 2 === 0) polaroidDiv.classList.add('tilt-left');
+        else polaroidDiv.classList.add('tilt-right');
+        
+        if (index % 3 === 0) polaroidDiv.classList.add('size-small');
+        else if (index % 3 === 1) polaroidDiv.classList.add('size-medium');
+        else polaroidDiv.classList.add('size-large');
+        
+        const photoCaption = photo.caption || "";
+        
+        polaroidDiv.innerHTML = `
+            <img src="${photo.src}" alt="Scrapbook photo">
+            <p class="caption">${photoCaption}</p>
+        `;
+        
+        container.appendChild(polaroidDiv);
+    });
+
+    updatePaginationControls();
+}
+
+function updatePaginationControls() {
+    document.getElementById('page-indicator').textContent = `Page ${currentPage}`;
+    document.getElementById('prev-btn').disabled = (currentPage === 1);
+    
+    const maxPages = Math.ceil(activePhotos.length / photosPerPage);
+    document.getElementById('next-btn').disabled = (currentPage === maxPages || maxPages === 0);
+}
+
+function goToPage(pageNumber) {
+    currentPage = pageNumber;
+    renderScrapbook();
+    document.querySelector('.scrapbook-section').scrollIntoView({ behavior: 'smooth' });
+}
+
+// 6. Initial Load
+document.addEventListener('DOMContentLoaded', () => {
+    determineActiveAlbum(); 
+    renderScrapbook();     
+});    
     photosToDisplay.forEach((photo, index) => {
         const polaroidDiv = document.createElement('div');
         polaroidDiv.classList.add('polaroid');
