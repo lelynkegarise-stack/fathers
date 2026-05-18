@@ -32,7 +32,7 @@ nav {
     height: auto;
 }
 
-logo {
+.logo {
     height: auto !important;
     width: auto !important;
 }
@@ -71,9 +71,10 @@ logo {
     box-sizing: border-box;
 }
 .intro img {
-  height: 60px;
+  height: 300px;
   width: auto;
   display: block;
+}
 .intro h1 {
     margin: 0 0 20px 0;
    color: black;
