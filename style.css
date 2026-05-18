@@ -70,7 +70,10 @@ logo {
     padding: 40px 20px;
     box-sizing: border-box;
 }
-
+.intro img {
+  height: 60px;
+  width: auto;
+  display: block;
 .intro h1 {
     margin: 0 0 20px 0;
    color: black;
