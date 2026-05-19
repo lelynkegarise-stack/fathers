@@ -33,9 +33,9 @@
 
     <!-- FIXED ID: Must be pagination-controls -->
     <div class="pagination" id="pagination-controls">
-        <button id="prev-btn" class="page-btn" onclick="goToPage(currentPage - 1)">« Previous</button>
+        <button id="prev-btn" class="page-btn">« Previous</button>
         <span id="page-indicator" class="current-page">Page 1</span>
-        <button id="next-btn" class="page-btn" onclick="goToPage(currentPage + 1)">Next »</button>
+        <button id="next-btn" class="page-btn">Next »</button>
     </div>
   </main>
 
@@ -49,8 +49,23 @@
       });
   </script>
 
-  <!-- 4. Global JavaScript File Links (Kept exactly as you had them) -->
+  <!-- 4. Global JavaScript File Links -->
   <script src="scrapbook.js"></script>
+
+  <!-- 5. FORCE JAVASCRIPT TO LOAD FAMILY MEMORIES -->
+  <script>
+    // This injects the key your scrapbook.js script needs if it's missing from the URL bar!
+    const urlParams = new URLSearchParams(window.location.search);
+    if (!urlParams.get('trip')) {
+      window.currentTrip = 'family'; 
+      // If your script uses a setup function to start, we force-trigger it here:
+      if (typeof renderScrapbook === 'function') {
+        renderScrapbook('family');
+      } else if (typeof loadImages === 'function') {
+        loadImages('family');
+      }
+    }
+  </script>
 
 </body>
 </html>
