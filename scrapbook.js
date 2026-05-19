@@ -62,15 +62,15 @@ const allScrapbooks = {
         { src: 'images/italy11.png', caption: '' },
         { src: 'images/italy12.png', caption: '' },
         { src: 'images/italy13.png', caption: 'Fishies' },
-        { src: 'images/italy14.png', caption: '' },
+        { src: 'images/italy14.png', caption: '' }
         ]
-          "tennessee": [
+    "tennessee": [
         { src: 'images/tennesse1.png', caption: 'Make Way' },
         { src: 'images/tennesse2.png', caption: 'Mountians' },
         { src: 'images/tennesse3.png', caption: '' },
         { src: 'images/tennesse4.png', caption: ' Paula Dean Wait' },
         { src: 'images/tennesse5.png', caption: 'Christmas Tree' },
-        { src: 'images/tennesse6.png', caption: 'Cabin Getaway' },
+        { src: 'images/tennesse6.png', caption: 'Cabin Getaway' }
         ]
     "vacation": [
         { src: 'images/mountain1.png', caption: 'Morning Hike' },
