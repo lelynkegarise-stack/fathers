@@ -3,12 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Vacation Hub</title>
+    <title>Our Travel Adventures Hub</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
+    <!-- Navbar Container -->
+    <div id="navbar"></div>
+    <script>
+        fetch("navbar.html")
+          .then(response => response.text())
+          .then(data => { document.getElementById("navbar").innerHTML = data; });
+    </script>
+
+    <header style="margin-top: 40px;">
         <h1>Our Travel Adventures</h1>
         <p>Click a destination to open the scrapbook</p>
     </header>
@@ -16,25 +24,51 @@
     <main class="preview-grid">
         <!-- Preview Card 1: Tennessee -->
         <a href="vacation.html?trip=tennessee" class="preview-card">
-            <div class="card-image" style="background-image: url('images/mountains-thumb.jpg');"></div>
+            <div class="card-image" style="background-image: url('images/tennessee1.png');"></div>
             <div class="card-info">
                 <h2>Tennessee</h2>
                 <p>Mountain Getaways</p>
             </div>
         </a>
 
-        <!-- Preview Card 2: Cabo -->
-        <a href="vacation.html?trip=cabo" class="preview-card">
-            <div class="card-image" style="background-image: url('images/beach-thumb.jpg');"></div>
+        <!-- Preview Card 2: Nicaragua -->
+        <a href="vacation.html?trip=nicaragua" class="preview-card">
+            <div class="card-image" style="background-image: url('images/nicaragua1.png');"></div>
             <div class="card-info">
-                <h2>Cabo</h2>
-                <p>Sun & Sand</p>
+                <h2>Nicaragua</h2>
+                <p>Tropical Escape</p>
             </div>
         </a>
 
-        <!-- Preview Card 3: Alaska -->
-        <a href="vacation.html?trip=alaska" class="preview-card">
-            <div class="card-image" style="background-image: url('images/beach-thumb.jpg');"></div>
+        <!-- Preview Card 3: Italy & Greece -->
+        <a href="vacation.html?trip=italy" class="preview-card">
+            <div class="card-image" style="background-image: url('images/italy1.png');"></div>
+            <div class="card-info">
+                <h2>Italy & Greece</h2>
+                <p>Historic Adventures</p>
+            </div>
+        </a>
+
+        <!-- Preview Card 4: General Beach/Vacation Array -->
+        <a href="vacation.html?trip=vacation" class="preview-card">
+            <div class="card-image" style="background-image: url('images/beach1.png');"></div>
+            <div class="card-info">
+                <h2>Beach</h2>
+                <p>Relaxing by the Coast</p>
+            </div>
+        </a>
+    </main>
+
+    <!-- Footer Container -->
+    <div id="footer"></div>
+    <script>
+        fetch("footer.html")
+          .then(response => response.text())
+          .then(data => { document.getElementById("footer").innerHTML = data; });
+    </script>
+
+</body>
+</html>            <div class="card-image" style="background-image: url('images/beach-thumb.jpg');"></div>
             <div class="card-info">
                 <h2>Alaska</h2>
                 <p>Glaciers & Wildlife</p>
