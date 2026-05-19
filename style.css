@@ -117,36 +117,34 @@ nav {
 
 /* 1. Base Polaroid Wrapper Styles */
 .polaroid {
-    background-color: white;
-    padding: 15px 15px 30px 15px; /* Top, sides, and a larger bottom pocket for captions */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    display: inline-block;
-    transition: transform 0.3s ease;
-    
-    /* Let the wrapper framework adjust tightly based on modifier width overrides */
-    width: auto; 
+  background-color: white;
+  padding: 15px 15px 30px 15px; /* Top, sides, and a larger bottom pocket for captions */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  display: inline-block;
+  transition: transform 0.3s ease;
+  box-sizing: border-box; /* Ensures padding doesn't distort the sizing */
 }
 
-/* 2. Style the images inside to fill their specific size container dynamically */
+/* 2. Forces images to match the exact structural width of their container */
 .polaroid img {
-    width: 100% !important;
-    height: auto !important;
-    display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
 }
 
 /* ==========================================
-   3. THE SIZE MODIFIERS (FIXED FRAME SIZES)
+   3. THE SIZE MODIFIERS (TARGETING THE CONTAINER)
    ========================================== */
 .polaroid.size-small {
-    width: 200px !important;  /* Scales the border AND picture down together */
+  width: 200px !important;  /* Shrinks the entire white card structure */
 }
 
 .polaroid.size-medium {
-    width: 260px !important;  /* Normal medium scaling framework */
+  width: 260px !important;  /* Sets the mid-sized structural width */
 }
 
 .polaroid.size-large {
-    width: 320px !important;  /* Scales the border AND picture up together */
+  width: 320px !important;  /* Fully expands the white card structure */
 }
 
 .caption {
@@ -172,7 +170,6 @@ nav {
   box-shadow: 5px 12px 22px rgba(0, 0, 0, 0.2);
   z-index: 10;
 }
-
 /******************************
        SCRAPBOOK PAGINATION
 ******************************/
