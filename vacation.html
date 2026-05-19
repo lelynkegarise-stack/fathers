@@ -1,40 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link rel="stylesheet" href="style.css?v=1.0">
-<link rel="icon" type="image/png" sizes="32x32" href="logo1.png">
-<link rel="apple-touch-icon" href="logo1.png">  
-    <title>My Vacation Hub</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="logo1.png">
+  <link rel="apple-touch-icon" href="logo1.png">  
+  <title>Vacation Scrapbook Viewer</title>
 </head>
-
 <body>
 
-  <!-- Navbar -->
-<div id="navbar"></div>
-<script>
+  <!-- Navbar Container -->
+  <div id="navbar"></div>
+  <script>
+    fetch("navbar.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("navbar").innerHTML = data;
+      });
+  </script>
 
-fetch("navbar.html")
-  .then(response => response.text())
-  .then(data => {
-    document.getElementById("navbar").innerHTML = data;
-  });
+  <main class="scrapbook-bg">
+    <!-- Managed completely by Route B in your scrapbook.js script -->
+    <section class="scrapbook-section" style="display: none;">
+        <h2 id="vacation-heading" class="section-heading">✈️ Vacation Memories</h2>
+        
+        <!-- JavaScript loads the chosen polaroids right here -->
+        <div id="scrapbook-gallery" class="scrapbook-flex"></div>
+    </section>
 
-</script>
-<body>
+    <!-- Pagination Module View Wrapper -->
+    <div class="pagination" id="pagination-controls" style="display: none;">
+        <button id="prev-btn" class="page-btn">« Previous</button>
+        <span id="page-indicator" class="current-page">Page 1</span>
+        <button id="next-btn" class="page-btn">Next »</button>
+    </div>
 
-    <header>
-        <h1>Our Travel Adventures</h1>
-        <p>Click a destination to open the scrapbook</p>
-    </header>
+    <!-- Back Navigation to Return to Hub Dashboard Layout -->
+    <div style="text-align: center; margin-top: 30px; margin-bottom: 50px;">
+        <a href="vacationIndex.html" class="page-btn" style="text-decoration: none; display: inline-block;">← Back to All Trips</a>
+    </div>
+  </main>
 
-    <!-- 1. THE HUB GRID (Shows when no trip is clicked) -->
-    <main class="preview-grid">
-        <!-- Preview Card 1: Tennessee -->
-        <a href="./vacation.html?trip=tennessee" class="preview-card">
-            <div class="card-image" style="background-image: url('images/tennesse1.png');"></div>
+  <!-- Footer Container -->
+  <div id="footer"></div>
+  <script>
+    fetch("footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
+  </script>
+
+  <!-- Core JavaScript Framework Component Driver -->
+  <script src="scrapbook.js"></script>
+
+</body>
+</html>            <div class="card-image" style="background-image: url('images/tennesse1.png');"></div>
             <div class="card-info">
                 <h2>Tennessee</h2>
                 <p>Mountain Getaways</p>
