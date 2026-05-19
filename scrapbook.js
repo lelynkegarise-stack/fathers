@@ -52,7 +52,7 @@ const allScrapbooks = {
         { src: 'images/italy1.png', caption: 'Church' },
         { src: 'images/italy2.png', caption: 'Collosium' },
         { src: 'images/italy3.png', caption: '' },
-        { src: 'images/italy4.png', caption: 'Aincient Potery' },
+        { src: 'images/italy4.png', caption: 'Aincient Pottery' }, // Fixed typo "Potery"
         { src: 'images/italy5.png', caption: '' },
         { src: 'images/italy6.png', caption: 'Greece' },
         { src: 'images/italy7.png', caption: 'Post Card Picture!' },
@@ -63,15 +63,15 @@ const allScrapbooks = {
         { src: 'images/italy12.png', caption: '' },
         { src: 'images/italy13.png', caption: 'Fishies' },
         { src: 'images/italy14.png', caption: '' }
-        ],
+    ],
     "tennessee": [
-        { src: 'images/tennesse1.png', caption: 'Make Way' },
-        { src: 'images/tennesse2.png', caption: 'Mountians' },
-        { src: 'images/tennesse3.png', caption: '' },
-        { src: 'images/tennesse4.png', caption: ' Paula Dean Wait' },
-        { src: 'images/tennesse5.png', caption: 'Christmas Tree' },
-        { src: 'images/tennesse6.png', caption: 'Cabin Getaway' }
-        ],
+        { src: 'images/tennessee1.png', caption: 'Make Way' }, // Fixed filename spelling "tennesse" -> "tennessee"
+        { src: 'images/tenennessee2.png', caption: 'Mountians' }, // Fixed filename spelling
+        { src: 'images/tennessee3.png', caption: '' },
+        { src: 'images/tennessee4.png', caption: ' Paula Dean Wait' },
+        { src: 'images/tennessee5.png', caption: 'Christmas Tree' },
+        { src: 'images/tennessee6.png', caption: 'Cabin Getaway' }
+    ],
     "vacation": [
         { src: 'images/mountain1.png', caption: 'Morning Hike' },
         { src: 'images/mountain2.png', caption: 'Cabin View' },
@@ -92,7 +92,7 @@ const photosPerPage = 10;
 // ==========================================
 function determineActiveAlbum() {
     const path = window.location.pathname;
-    const page = path.split("/").pop(); // Gets filename like "family.html" or "vacation.html"
+    const page = path.split("/").pop(); 
     
     const gridContainer = document.querySelector('.preview-grid');
     const scrapbookContainer = document.querySelector('.scrapbook-section');
@@ -113,7 +113,6 @@ function determineActiveAlbum() {
         const tripKey = urlParams.get('trip');
 
         if (tripKey && allScrapbooks[tripKey.toLowerCase()]) {
-            // Album target selected -> Hide dashboard cards, show the memory stack
             if (gridContainer) gridContainer.style.display = 'none';
             if (scrapbookContainer) scrapbookContainer.style.display = 'block';
             if (paginationContainer) paginationContainer.style.display = 'flex';
@@ -126,7 +125,7 @@ function determineActiveAlbum() {
                 heading.textContent = `✈️ ${tripKey.charAt(0).toUpperCase() + tripKey.slice(1)} Memories`;
             }
         } else {
-            // Dashboard mode -> Show preview choice cards, hide empty template regions
+            // Dashboard mode -> Show preview choice cards
             if (gridContainer) gridContainer.style.display = 'grid';
             if (scrapbookContainer) scrapbookContainer.style.display = 'none';
             if (paginationContainer) paginationContainer.style.display = 'none';
@@ -173,7 +172,7 @@ function renderScrapbook() {
 }
 
 // ==========================================
-// 5. INTERFACE CONTROLS
+// 5. INTERFACE CONTROLS & EVENT LISTENERS
 // ==========================================
 function updatePaginationControls() {
     const prevBtn = document.getElementById('prev-btn');
@@ -202,4 +201,21 @@ function goToPage(pageNumber) {
 document.addEventListener('DOMContentLoaded', () => {
     determineActiveAlbum(); 
     renderScrapbook();     
+
+    // FIX: Wire up the button click elements explicitly!
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            if (currentPage > 1) goToPage(currentPage - 1);
+        });
+    }
+
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            const maxPages = Math.ceil(activePhotos.length / photosPerPage);
+            if (currentPage < maxPages) goToPage(currentPage + 1);
+        });
+    }
 });
