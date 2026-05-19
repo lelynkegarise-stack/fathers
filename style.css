@@ -115,43 +115,44 @@ nav {
   padding: 20px 0;
 }
 
-/* Base Polaroid Card Structure */
+/* 1. Base Polaroid Wrapper Styles */
 .polaroid {
-  background-color: #ffffff;
-  padding: 15px 15px 25px 15px; 
-  box-shadow: 3px 6px 15px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e4e4e4;
-  transition: transform 0.3s ease, box-shadow 0.3s ease; 
-  display: flex;
-  flex-direction: column;
+    background-color: white;
+    padding: 15px 15px 30px 15px; /* Top, sides, and a larger bottom pocket for captions */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    display: inline-block;
+    transition: transform 0.3s ease;
+    
+    /* CRITICAL FIX: Remove any fixed 'width: 300px' from here! */
+    /* Instead, let the wrapper shrink down to fit the specific size class assigned to it */
+    width: auto; 
 }
 
-/* Global Polaroid Image Constraints (Moved above specific size mods) */
+/* 2. Style the images inside to fill their specific size container */
 .polaroid img {
-  width: 100%;
-  height: auto;        
-  aspect-ratio: 1 / 1; 
-  object-fit: cover;   
-  border: 1px solid #f0f0f0;
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
-/* --- Dynamic Size Modifications --- */
+/* ==========================================
+   3. THE SIZE MODIFIERS (AS ADDED BY YOUR JS)
+   ========================================== */
 .polaroid.size-small {
-  width: 190px;
+    width: 200px;  /* Scales the border AND picture down together */
 }
 .polaroid.size-small img {
-  object-fit: cover; 
+  object-fit: cover;
 }
-
 .polaroid.size-medium {
-  width: 240px;
+    width: 260px;  /* Normal medium scaling */
 }
 .polaroid.size-medium img {
   object-fit: cover;
 }
 
 .polaroid.size-large {
-  width: 290px;
+    width: 320px;  /* Scales the border AND picture up together */
 }
 .polaroid.size-large img {
   object-fit: cover;
