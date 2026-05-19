@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css?v=1.0">
   <link rel="icon" type="image/png" sizes="32x32" href="logo1.png">
   <link rel="apple-touch-icon" href="logo1.png">  
-  <title>Dad's Scrapbook - Page 1</title>
+  <title>Family Scrapbook</title>
 </head>
 
 <body>
@@ -22,22 +22,22 @@
       });
   </script>
 
- <!-- Inside your single family.html file -->
-<main class="scrapbook-bg">
+  <!-- Inside your single family.html file -->
+  <main class="scrapbook-bg">
     <section class="scrapbook-section">
         <h2 class="section-heading">🏠 Family Memories</h2>
         
-        <!-- This stays the same -->
-        <div id="family-gallery" class="scrapbook-flex"></div>
+        <!-- FIXED: ID changed from family-gallery to scrapbook-gallery to match your JS -->
+        <div id="scrapbook-gallery" class="scrapbook-flex"></div>
     </section>
 
-    <!-- UPDATED PAGINATION: Buttons that trigger JS functions -->
-    <div class="pagination">
-        <button id="prev-btn" class="page-btn" onclick="goToPage(1)">« Page 1</button>
+    <!-- FIXED: Added id="pagination-controls" and updated buttons to use active dynamic calculations -->
+    <div class="pagination" id="pagination-controls">
+        <button id="prev-btn" class="page-btn" onclick="goToPage(currentPage - 1)">« Previous</button>
         <span id="page-indicator" class="current-page">Page 1</span>
-        <button id="next-btn" class="page-btn" onclick="goToPage(2)">Page 2 »</button>
+        <button id="next-btn" class="page-btn" onclick="goToPage(currentPage + 1)">Next »</button>
     </div>
-</main>
+  </main>
 
   <!-- 3. Footer Container & Fetch Script -->
   <div id="footer"></div>
