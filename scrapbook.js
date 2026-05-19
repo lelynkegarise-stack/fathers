@@ -48,6 +48,30 @@ const allScrapbooks = {
         { src: 'images/nicaragua26.png', caption: 'Volcano' },
         { src: 'images/nicaragua27.png', caption: 'Sharing Testimony at Rehab' }
     ],
+    "italy": [
+        { src: 'images/italy1.png', caption: 'Church' },
+        { src: 'images/italy2.png', caption: 'Collosium' },
+        { src: 'images/italy3.png', caption: '' },
+        { src: 'images/italy4.png', caption: 'Aincient Potery' },
+        { src: 'images/italy5.png', caption: '' },
+        { src: 'images/italy6.png', caption: 'Greece' },
+        { src: 'images/italy7.png', caption: 'Post Card Picture!' },
+        { src: 'images/italy8.png', caption: '' },
+        { src: 'images/italy9.png', caption: 'Olympia' },
+        { src: 'images/italy10.png', caption: '' },
+        { src: 'images/italy11.png', caption: '' },
+        { src: 'images/italy12.png', caption: '' },
+        { src: 'images/italy13.png', caption: 'Fishies' },
+        { src: 'images/italy14.png', caption: '' },
+        ]
+          "tennessee": [
+        { src: 'images/tennesse1.png', caption: 'Make Way' },
+        { src: 'images/tennesse2.png', caption: 'Mountians' },
+        { src: 'images/tennesse3.png', caption: '' },
+        { src: 'images/tennesse4.png', caption: ' Paula Dean Wait' },
+        { src: 'images/tennesse5.png', caption: 'Christmas Tree' },
+        { src: 'images/tennesse6.png', caption: 'Cabin Getaway' },
+        ]
     "vacation": [
         { src: 'images/mountain1.png', caption: 'Morning Hike' },
         { src: 'images/mountain2.png', caption: 'Cabin View' },
