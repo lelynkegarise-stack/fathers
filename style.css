@@ -141,22 +141,16 @@ nav {
 .polaroid.size-small {
     width: 200px;  /* Scales the border AND picture down together */
 }
-.polaroid.size-small img {
-  object-fit: cover;
-}
+
 .polaroid.size-medium {
     width: 260px;  /* Normal medium scaling */
 }
-.polaroid.size-medium img {
-  object-fit: cover;
-}
+
 
 .polaroid.size-large {
     width: 320px;  /* Scales the border AND picture up together */
 }
-.polaroid.size-large img {
-  object-fit: cover;
-}
+
 
 .caption {
   text-align: center;
