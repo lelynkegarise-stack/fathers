@@ -10,7 +10,7 @@
 </head>
 <body>
 
-  <!-- Navbar Container -->
+  <!-- 1. Navbar Container -->
   <div id="navbar"></div>
   <script>
     fetch("navbar.html")
@@ -20,29 +20,29 @@
       });
   </script>
 
+  <!-- 2. Clean Scrapbook Canvas (No preview cards allowed here!) -->
   <main class="scrapbook-bg">
-    <!-- Managed completely by Route B in your scrapbook.js script -->
-    <section class="scrapbook-section" style="display: none;">
+    <section class="scrapbook-section">
         <h2 id="vacation-heading" class="section-heading">✈️ Vacation Memories</h2>
         
-        <!-- JavaScript loads the chosen polaroids right here -->
+        <!-- The polaroids drop neatly right here without getting pushed down -->
         <div id="scrapbook-gallery" class="scrapbook-flex"></div>
     </section>
 
-    <!-- Pagination Module View Wrapper -->
-    <div class="pagination" id="pagination-controls" style="display: none;">
+    <!-- Pagination Module -->
+    <div class="pagination" id="pagination-controls">
         <button id="prev-btn" class="page-btn">« Previous</button>
         <span id="page-indicator" class="current-page">Page 1</span>
         <button id="next-btn" class="page-btn">Next »</button>
     </div>
 
-    <!-- Back Navigation to Return to Hub Dashboard Layout -->
+    <!-- Back Navigation to Index Hub -->
     <div style="text-align: center; margin-top: 30px; margin-bottom: 50px;">
         <a href="vacationIndex.html" class="page-btn" style="text-decoration: none; display: inline-block;">← Back to All Trips</a>
     </div>
   </main>
 
-  <!-- Footer Container -->
+  <!-- 3. Footer Container -->
   <div id="footer"></div>
   <script>
     fetch("footer.html")
@@ -52,120 +52,8 @@
       });
   </script>
 
-  <!-- Core JavaScript Framework Component Driver -->
+  <!-- 4. Core JavaScript Engine -->
   <script src="scrapbook.js"></script>
-
-</body>
-</html>            <div class="card-image" style="background-image: url('images/tennesse1.png');"></div>
-            <div class="card-info">
-                <h2>Tennessee</h2>
-                <p>Mountain Getaways</p>
-            </div>
-        </a>
-
-        <!-- Preview Card 2: Cabo -->
-        <a href="./vacation.html?trip=cabo" class="preview-card">
-            <div class="card-image" style="background-image: url('images/cabo1.png');"></div>
-            <div class="card-info">
-                <h2>Cabo</h2>
-                <p>Sun & Sand</p>
-            </div>
-        </a>
-
-        <!-- Preview Card 3: Alaska -->
-        <a href="./vacation.html?trip=alaska" class="preview-card">
-            <div class="card-image" style="background-image: url('images/alaska1.png');"></div>
-            <div class="card-info">
-                <h2>Alaska</h2>
-                <p>Glaciers & Wildlife</p>
-            </div>
-        </a>
-
-        <!-- Preview Card 4: Nicaragua -->
-        <a href="./vacation.html?trip=nicaragua" class="preview-card">
-            <div class="card-image" style="background-image: url('images/nicaragua1.png');"></div>
-            <div class="card-info">
-                <h2>Nicaragua</h2>
-                <p>Tropical Escape</p>
-            </div>
-        </a>
-
-        <!-- Preview Card 5: Florida -->
-        <a href="./vacation.html?trip=florida" class="preview-card">
-            <div class="card-image" style="background-image: url('images/flordia1.png');"></div>
-            <div class="card-info">
-                <h2>Florida</h2>
-                <p>Sunshine State Fun</p>
-            </div>
-        </a>
-
-        <!-- Preview Card 6: New York -->
-        <a href="./vacation.html?trip=new-york" class="preview-card">
-            <div class="card-image" style="background-image: url('images/newyork1.png');"></div>
-            <div class="card-info">
-                <h2>New York</h2>
-                <p>City Lights & Exploring</p>
-            </div>
-        </a>
-
-        <!-- Preview Card 7: Italy & Greece -->
-        <a href="./vacation.html?trip=italy-greece" class="preview-card">
-            <div class="card-image" style="background-image: url('images/italy1.png');"></div>
-            <div class="card-info">
-                <h2>Italy & Greece</h2>
-                <p>Historic Adventures</p>
-            </div>
-        </a>
-
-        <!-- Preview Card 8: Beach -->
-        <a href="./vacation.html?trip=general-beach" class="preview-card">
-            <div class="card-image" style="background-image: url('images/beach1.png');"></div>
-            <div class="card-info">
-                <h2>Beach</h2>
-                <p>Relaxing by the Coast</p>
-            </div>
-        </a>
-    </main>
-
-    <!-- 2. THE SCRAPBOOK SECTION (Hidden until a card is clicked) -->
-    <section class="scrapbook-section" style="display: none;">
-        <h2 id="vacation-heading" style="text-align: center; color: #2c3e50;">✈️ Vacation Memories</h2>
-        <div id="scrapbook-gallery" class="scrapbook-flex"></div>
-        
-        <!-- 3. PAGINATION CONTROLS -->
-        <div class="pagination" id="pagination-controls" style="display: none;">
-            <button id="prev-btn" class="page-btn" onclick="goToPage(currentPage - 1)">« Previous</button>
-            <span id="page-indicator" class="current-page">Page 1</span>
-            <button id="next-btn" class="page-btn" onclick="goToPage(currentPage + 1)">Next »</button>
-        </div>
-        
-        <!-- Back Button to get back to the preview choices easily -->
-        <div style="text-align: center; margin-top: 30px;">
-            <a href="./vacation.html" class="page-btn" style="text-decoration: none; display: inline-block;">← Back to All Trips</a>
-        </div>
-    </section>
-
-    <!-- Link your JS file at the bottom -->
-    <script src="scrapbook.js"></script>
-</body>
-</html>        <span id="page-indicator" class="current-page">Page 1</span>
-        <button id="next-btn" class="page-btn" onclick="goToPage(currentPage + 1)">Next »</button>
-    </div>
-  </main>
-
-  <!-- 3. Footer Container & Fetch Script -->
-  <div id="footer"></div>
-  <script>
-    fetch("footer.html")
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("footer").innerHTML = data;
-      });
-  </script>
-
-  <!-- 4. JavaScript File Links -->
-  <script src="scrapbook.js"></script>
-  <script src="style.js"></script>
 
 </body>
 </html>
