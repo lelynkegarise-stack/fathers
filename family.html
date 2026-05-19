@@ -22,16 +22,16 @@
       });
   </script>
 
-  <!-- Inside your single family.html file -->
   <main class="scrapbook-bg">
+    <!-- This section wrapper MUST be here so the script can show/hide it -->
     <section class="scrapbook-section">
-        <h2 class="section-heading">🏠 Family Memories</h2>
+        <h2 id="vacation-heading" class="section-heading">🏠 Family Memories</h2>
         
-        <!-- FIXED: ID changed from family-gallery to scrapbook-gallery to match your JS -->
+        <!-- FIXED ID: Must be scrapbook-gallery -->
         <div id="scrapbook-gallery" class="scrapbook-flex"></div>
     </section>
 
-    <!-- FIXED: Added id="pagination-controls" and updated buttons to use active dynamic calculations -->
+    <!-- FIXED ID: Must be pagination-controls -->
     <div class="pagination" id="pagination-controls">
         <button id="prev-btn" class="page-btn" onclick="goToPage(currentPage - 1)">« Previous</button>
         <span id="page-indicator" class="current-page">Page 1</span>
@@ -49,9 +49,8 @@
       });
   </script>
 
-  <!-- 4. Global JavaScript File Links -->
+  <!-- 4. Global JavaScript File Links (Kept exactly as you had them) -->
   <script src="scrapbook.js"></script>
-  <script src="style.js"></script>
 
 </body>
 </html>
