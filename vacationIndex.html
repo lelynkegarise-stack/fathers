@@ -8,12 +8,13 @@
 </head>
 <body>
 
-    <!-- Navbar Container -->
     <div id="navbar"></div>
     <script>
         fetch("navbar.html")
-          .then(response => response.text())
-          .then(data => { document.getElementById("navbar").innerHTML = data; });
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("navbar").innerHTML = data;
+            });
     </script>
 
     <header style="margin-top: 40px;">
@@ -22,7 +23,6 @@
     </header>
 
     <main class="preview-grid">
-        <!-- Preview Card 1: Tennessee -->
         <a href="vacation.html?trip=tennessee" class="preview-card">
             <div class="card-image" style="background-image: url('images/tennessee1.png');"></div>
             <div class="card-info">
@@ -31,7 +31,6 @@
             </div>
         </a>
 
-        <!-- Preview Card 2: Nicaragua -->
         <a href="vacation.html?trip=nicaragua" class="preview-card">
             <div class="card-image" style="background-image: url('images/nicaragua1.png');"></div>
             <div class="card-info">
@@ -40,7 +39,6 @@
             </div>
         </a>
 
-        <!-- Preview Card 3: Italy & Greece -->
         <a href="vacation.html?trip=italy" class="preview-card">
             <div class="card-image" style="background-image: url('images/italy1.png');"></div>
             <div class="card-info">
@@ -49,7 +47,6 @@
             </div>
         </a>
 
-        <!-- Preview Card 4: General Beach/Vacation Array -->
         <a href="vacation.html?trip=beach" class="preview-card">
             <div class="card-image" style="background-image: url('images/beach1.png');"></div>
             <div class="card-info">
@@ -57,159 +54,64 @@
                 <p>Relaxing by the Coast</p>
             </div>
         </a>
+
         <a href="vacation.html?trip=alaska" class="preview-card">
             <div class="card-image" style="background-image: url('images/alaska1.png');"></div>
-            <div class="card-info">
-                <h2>Alaska</h2>
-                <p>t</p>
-            </div>
-        </a>
-        <a href="vacation.html?trip=ireland" class="preview-card">
-            <div class="card-image" style="background-image: url('images/ireland1.png');"></div>
-            <div class="card-info">
-                <h2>Ireland</h2>
-                <p></p>
-            </div>
-        </a>
-         <a href="vacation.html?trip=flordia" class="preview-card">
-            <div class="card-image" style="background-image: url('images/flordia1.png');"></div>
-            <div class="card-info">
-                <h2>Flordia</h2>
-                <p></p>
-            </div>
-        </a>
-         <a href="vacation.html?trip=cabo" class="preview-card">
-            <div class="card-image" style="background-image: url('images/cabo1.png');"></div>
-            <div class="card-info">
-                <h2>Cabo</h2>
-                <p></p>
-            </div>
-        </a>
-         <a href="vacation.html?trip=newyork" class="preview-card">
-            <div class="card-image" style="background-image: url('images/newyork1.png');"></div>
-            <div class="card-info">
-                <h2>New York</h2>
-                <p></p>
-            </div>
-        </a>
-         <a href="vacation.html?trip=hawaii" class="preview-card">
-            <div class="card-image" style="background-image: url('images/hawaii1.png');"></div>
-            <div class="card-info">
-                <h2>Hawaii</h2>
-                <p></p>
-            </div>
-        </a>
-    </main>
-
-    <!-- Footer Container -->
-    <div id="footer"></div>
-    <script>
-        fetch("footer.html")
-          .then(response => response.text())
-          .then(data => { document.getElementById("footer").innerHTML = data; });
-    </script>
-
-</body>
-</html>            <div class="card-image" style="background-image: url('images/beach-thumb.jpg');"></div>
             <div class="card-info">
                 <h2>Alaska</h2>
                 <p>Glaciers & Wildlife</p>
             </div>
         </a>
 
-        <!-- Preview Card 4: Nicaragua (Fixed the background-image syntax here!) -->
-        <a href="vacation.html?trip=nicaragua" class="preview-card">
-            <div class="card-image" style="background-image: url('images/nicaragua1.png');"></div>
+        <a href="vacation.html?trip=ireland" class="preview-card">
+            <div class="card-image" style="background-image: url('images/ireland1.png');"></div>
             <div class="card-info">
-                <h2>Nicaragua</h2>
-                <p>Tropical Escape</p>
+                <h2>Ireland</h2>
+                <p>Emerald Isle Exploration</p>
             </div>
         </a>
 
-        <!-- Preview Card 5: Florida -->
         <a href="vacation.html?trip=florida" class="preview-card">
-            <div class="card-image" style="background-image: url('images/beach-thumb.jpg');"></div>
+            <div class="card-image" style="background-image: url('images/florida1.png');"></div>
             <div class="card-info">
                 <h2>Florida</h2>
                 <p>Sunshine State Fun</p>
             </div>
         </a>
 
-        <!-- Preview Card 6: New York -->
-        <a href="vacation.html?trip=new-york" class="preview-card">
-            <div class="card-image" style="background-image: url('images/beach-thumb.jpg');"></div>
+        <a href="vacation.html?trip=cabo" class="preview-card">
+            <div class="card-image" style="background-image: url('images/cabo1.png');"></div>
+            <div class="card-info">
+                <h2>Cabo</h2>
+                <p>Desert Meets the Sea</p>
+            </div>
+        </a>
+
+        <a href="vacation.html?trip=newyork" class="preview-card">
+            <div class="card-image" style="background-image: url('images/newyork1.png');"></div>
             <div class="card-info">
                 <h2>New York</h2>
                 <p>City Lights & Exploring</p>
             </div>
         </a>
 
-        <!-- Preview Card 7: Italy & Greece -->
-        <a href="vacation.html?trip=italy-greece" class="preview-card">
-            <div class="card-image" style="background-image: url('images/beach-thumb.jpg');"></div>
+        <a href="vacation.html?trip=hawaii" class="preview-card">
+            <div class="card-image" style="background-image: url('images/hawaii1.png');"></div>
             <div class="card-info">
-                <h2>Italy & Greece</h2>
-                <p>Historic Adventures</p>
-            </div>
-        </a>
-
-        <!-- Preview Card 8: Beach -->
-        <a href="vacation.html?trip=general-beach" class="preview-card">
-            <div class="card-image" style="background-image: url('images/beach-thumb.jpg');"></div>
-            <div class="card-info">
-                <h2>Beach</h2>
-                <p>Relaxing by the Coast</p>
+                <h2>Hawaii</h2>
+                <p>Island Paradise</p>
             </div>
         </a>
     </main>
 
-</body>
-</html>            <div class="card-info">
-                <h2>Alaska</h2>
-                <p></p>
-            </div>
-        </a>
-             <!-- Preview Card 4 -->
-       <a href="scrapbooks/beach-trip.html" class="preview-card">
-            <div class="card-image" style="background-image: src='nicaragua1.png'"></div>
-            <div class="card-info">
-                <h2>Nicaragua</h2>
-                <p></p>
-            </div>
-        </a>
-             <!-- Preview Card 4 -->
-       <a href="scrapbooks/beach-trip.html" class="preview-card">
-            <div class="card-image" style="background-image: url('images/beach-thumb.jpg');"></div>
-            <div class="card-info">
-                <h2>Flordia</h2>
-                <p></p>
-            </div>
-        </a>
-             <!-- Preview Card 5 -->
-       <a href="scrapbooks/beach-trip.html" class="preview-card">
-            <div class="card-image" style="background-image: url('images/beach-thumb.jpg');"></div>
-            <div class="card-info">
-                <h2>New York</h2>
-                <p></p>
-            </div>
-        </a>
-             <!-- Preview Card 6-->
-       <a href="scrapbooks/beach-trip.html" class="preview-card">
-            <div class="card-image" style="background-image: url('images/beach-thumb.jpg');"></div>
-            <div class="card-info">
-                <h2>Italy & Greece</h2>
-                <p></p>
-            </div>
-        </a>
-             <!-- Preview Card 7 -->
-       <a href="scrapbooks/beach-trip.html" class="preview-card">
-            <div class="card-image" style="background-image: url('images/beach-thumb.jpg');"></div>
-            <div class="card-info">
-                <h2>Beach</h2>
-                <p></p>
-            </div>
-        </a>
-    </main>
+    <div id="footer"></div>
+    <script>
+        fetch("footer.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("footer").innerHTML = data;
+            });
+    </script>
 
 </body>
 </html>
