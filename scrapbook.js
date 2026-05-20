@@ -279,37 +279,38 @@ let activePhotos = [];
 let currentPage = 1;
 const photosPerPage = 10;
 
-// ==========================================
-// 3. PAGE DETECTION AND ROUTING LOGIC
-// ==========================================
+// ========================================== //
+// 3. PAGE DETECTION AND ROUTING LOGIC        //
+// ========================================== //
 function determineActiveAlbum() {
-    const path = window.location.pathname;
-    const page = path.split("/").pop(); 
-    
+    const path = window.location.pathname.toLowerCase(); // Force lowercase for safety
     const gridContainer = document.querySelector('.preview-grid');
     const scrapbookContainer = document.querySelector('.scrapbook-section');
     const paginationContainer = document.getElementById('pagination-controls');
 
     // ROUTE A: Explicitly viewing family.html
-    if (page === "family.html") {
+    if (path.includes("family.html")) {
         activePhotos = allScrapbooks["family"];
         if (scrapbookContainer) scrapbookContainer.style.display = 'block';
         if (paginationContainer) paginationContainer.style.display = 'flex';
         if (gridContainer) gridContainer.style.display = 'none';
-        return; 
+        return;
     }
 
     // ROUTE B: Explicitly viewing vacation.html
-    if (page === "vacation.html") {
+    if (path.includes("vacation.html")) {
         const urlParams = new URLSearchParams(window.location.search);
         const tripKey = urlParams.get('trip');
 
-        if (tripKey && allScrapbooks[tripKey.toLowerCase()]) {
+        // Normalize the key to lower case
+        const normalizedKey = tripKey ? tripKey.toLowerCase() : null;
+
+        if (normalizedKey && allScrapbooks[normalizedKey]) {
             if (gridContainer) gridContainer.style.display = 'none';
             if (scrapbookContainer) scrapbookContainer.style.display = 'block';
             if (paginationContainer) paginationContainer.style.display = 'flex';
             
-            activePhotos = allScrapbooks[tripKey.toLowerCase()];
+            activePhotos = allScrapbooks[normalizedKey];
             currentPage = 1;
             
             const heading = document.getElementById('vacation-heading');
@@ -317,7 +318,7 @@ function determineActiveAlbum() {
                 heading.textContent = `✈️ ${tripKey.charAt(0).toUpperCase() + tripKey.slice(1)} Memories`;
             }
         } else {
-            // Dashboard mode -> Show preview choice cards
+            // Dashboard mode -> Show preview choice cards if no valid parameter is passed
             if (gridContainer) gridContainer.style.display = 'grid';
             if (scrapbookContainer) scrapbookContainer.style.display = 'none';
             if (paginationContainer) paginationContainer.style.display = 'none';
@@ -325,7 +326,6 @@ function determineActiveAlbum() {
         }
     }
 }
-
 // ==========================================
 // 4. THE AUTOMATED PICTURE LAYOUT ENGINE
 // ==========================================
