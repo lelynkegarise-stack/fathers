@@ -154,7 +154,7 @@ const allScrapbooks = {
          { src: 'images/alaska51.png', caption: '' },
          { src: 'images/alaska52.png', caption: 'Bear Buddy' }   
     ],
-    "flordia": [
+    "florida": [
         { src: 'images/flordia1.png', caption: '' },
         { src: 'images/flordia2.png', caption: 'Harry Potter World' },
         { src: 'images/flordia3.png', caption: '' },
