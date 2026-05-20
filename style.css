@@ -1,533 +1,232 @@
-/******************************
-            GLOBAL & FOOTER
-******************************/
+/****************************** GLOBAL & BODY ******************************/
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f8;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+/****************************** GLOBAL FOOTER ******************************/
 footer {
-  background: #D3D3D3 !important; 
-  color: #333333 !important;      
-  text-align: center;
-  padding: 15px 10px;
-  font-size: 14px;
-  line-height: 1.6;
+    background: #D3D3D3 !important;
+    color: #333333 !important;
+    text-align: center;
+    padding: 15px 10px;
+    font-size: 14px;
+    line-height: 1.6;
 }
 
 footer a {
-  color: #333333 !important;      
-  text-decoration: none;
-  margin: 0 5px;
+    color: #333333 !important;
+    text-decoration: none;
+    margin: 0 5px;
 }
 
 footer a:hover {
-  color: white;
+    color: white;
 }
 
-/******************************
-         NAVIGATION BAR
-******************************/
+/****************************** NAVIGATION BAR ******************************/
 nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 40px;
-  background-color: #D3D3D3;
-  position: relative;
-  height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+    background-color: #D3D3D3;
+    position: relative;
+    height: auto;
 }
 
 .logo {
-  height: auto !important;
-  width: auto !important;
+    height: auto !important;
+    width: auto !important;
 }
 
 .logo img {
-  height: 50px !important;  
-  width: auto !important;    
-  display: block;            
-}
+    height: 50px !important;
+    width: auto !important;
+    display: block;
+    }
 
 .menu {
-  list-style: none !important;
-  display: flex;
-  gap: 20px;
-  margin: 0;
-  padding: 0;
-  align-items: center;
+    list-style: none !important;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+    align-items: center;
 }
 
 .menu li a {
-  text-decoration: none;
-  font-weight: bold;
-  color: #333333; /* Clean text styling matching footer link weights */
-  transition: color 0.2s ease;
-}
-
-.menu li a:hover {
-  color: #ffffff;
-}
-
-/******************************
-          INTRO SECTION
-******************************/
-.intro {
-  background-color: white;
-  color: black;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 60vh;
-  padding: 40px 20px;
-  box-sizing: border-box;
-}
-
-.intro img {
-  max-width: 600px;
-  width: 100%;      
-  height: auto;      
-  display: block;
-  margin-top: 20px; 
-}
-
-.intro h1 {
-  margin: 0 0 20px 0;
-  color: black;
-  font-weight: bold;
-}
-
-.intro p {
-  max-width: 800px;
-  margin-top: 20px;
-}
-
-/******************************
-        SCRAPBOOK LAYOUT
-******************************/
-.scrapbook-bg {
-  background-color: #f5f4f0; /* Soft, warm album page tone */
-  padding: 40px 20px;
-}
-
-.scrapbook-flex {
-  display: flex;            
-  flex-wrap: wrap;         
-  gap: 25px;              
-  justify-content: center; 
-  padding: 20px 0;
-    align-items: flex-start; /* Prevents cards from stretching vertically to match the tallest photo! */
-}
-
-/* 1. Base Polaroid Wrapper Styles */
-.polaroid {
-  background-color: white;
-  padding: 15px 15px 30px 15px; /* Top, sides, and a larger bottom pocket for captions */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  display: inline-block;
-  transition: transform 0.3s ease;
-  box-sizing: border-box; /* Ensures padding doesn't distort the sizing */
-}
-
-/* 2. Forces images to match the exact structural width of their container */
-.polaroid img {
-  width: 100% !important;
-  height: auto !important;
-  display: block !important;
-}
-
-/* ==========================================
-   3. THE SIZE MODIFIERS (TARGETING THE CONTAINER)
-   ========================================== */
-.polaroid.size-small {
-  width: 200px !important;  /* Shrinks the entire white card structure */
-}
-
-.polaroid.size-medium {
-  width: 260px !important;  /* Sets the mid-sized structural width */
-}
-
-.polaroid.size-large {
-  width: 320px !important;  /* Fully expands the white card structure */
-}
-
-.caption {
-  text-align: center;
-  margin-top: 12px;
-  margin-bottom: 0;
-  font-size: 0.95rem;
-  color: #444;
-}
-
-/* --- Organic Photo Pile Rotations --- */
-.tilt-left {
-  transform: rotate(-3deg);
-}
-
-.tilt-right {
-  transform: rotate(3deg);
-}
-
-/* Interactive Hover Lift Frame Effect */
-.polaroid:hover {
-  transform: rotate(0deg) scale(1.05);
-  box-shadow: 5px 12px 22px rgba(0, 0, 0, 0.2);
-  z-index: 10;
-}
-/******************************
-       SCRAPBOOK PAGINATION
-******************************/
-.pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  margin: 50px 0;
-  font-family: inherit;
-}
-
-.page-btn {
-  text-decoration: none;
-  color: #333333;
-  background-color: #ffffff;
-  padding: 10px 20px;
-  border-radius: 25px;
-  border: 1px solid #d3d3d3;
-  font-weight: bold;
-  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.05);
-  transition: all 0.2s ease;
-  cursor: pointer;
-}
-
-.page-btn:hover {
-  background-color: #333333;
-  color: #ffffff;
-  transform: translateY(-2px);
-  box-shadow: 2px 6px 15px rgba(0, 0, 0, 0.1);
-}
-
-.page-btn:disabled {
-  background-color: #f0f0f0;
-  color: #cccccc;
-  border-color: #e0e0e0;
-  cursor: not-allowed;
-  transform: none !important;
-  box-shadow: none !important;
-}
-
-.current-page {
-  color: #888888;
-  font-weight: bold;
-}
-
-/*==============
-    VACATION
-==============*/
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f6f8;
-    color: #333;
-    margin: 0;
-    padding: 20px;
-}
-
-header {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-header h1 {
-    color: #2c3e50;
-    font-weight: 600;
-}
-
-/* Grid Layout */
-.preview-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* Interactive Cards */
-.preview-card {
-    background: #ffffff;
-    border-radius: 12px;
-    overflow: hidden;
     text-decoration: none;
-    color: inherit;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.preview-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
-}
-
-.card-image {
-    height: 200px;
-    background-size: cover;
-    background-position: center;
-    background-color: #e0e0e0; /* Fallback */
-}
-
-.card-info {
-    padding: 20px;
-}
-
-.card-info h2 {
-    margin: 0 0 8px 0;
-    font-size: 1.4rem;
-    color: #2c3e50;
-}
-
-.card-info p {
-    margin: 0;
-    color: #7f8c8d;
-    font-size: 0.95rem;
-}
-
-/******************************
-     MOBILE & RESPONSIVE
-******************************/
-@media screen and (max-width: 950px) {
-  nav {
-    flex-direction: column; 
-    height: auto;
-    padding: 15px 10px;
-    gap: 15px;
-  }
-
-  .menu {
-    display: flex !important;
-    flex-direction: row;
-    flex-wrap: wrap; 
-    position: static;
-    justify-content: center;
-    gap: 15px;              
-    margin-top: 15px;
-    width: 100%;
-    background-color: transparent;
-    border-top: 1px solid #ddd;
-    padding-bottom: 20px;
-    list-style: none !important;
-    z-index: 1500;
-  }
-
-  .menu li {
-    width: 100%;
-    text-align: center;
-    padding: 10px 0;
-    list-style: none !important;
-  }
-}  height: auto !important;
-  width: auto !important;
-}
-
-.logo img {
-  height: 50px !important;  
-  width: auto !important;    
-  display: block;            
-}
-
-.menu {
-  list-style: none !important;
-  display: flex;
-  gap: 20px;
-  margin: 0;
-  padding: 0;
-  align-items: center;
-}
-
-.menu li a {
-  text-decoration: none;
-  font-weight: bold;
-  color: #333333; /* Clean text styling matching footer link weights */
-  transition: color 0.2s ease;
+    font-weight: bold;
+    color: #333333;
+    transition: color 0.2s ease;
 }
 
 .menu li a:hover {
-  color: #ffffff;
+    color: #ffffff;
 }
 
-/******************************
-          INTRO SECTION
-******************************/
+/****************************** INTRO SECTION ******************************/
 .intro {
-  background-color: white;
-  color: black;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 60vh;
-  padding: 40px 20px;
-  box-sizing: border-box;
+    background-color: white;
+    color: black;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    padding: 40px 20px;
+    box-sizing: border-box;
 }
 
 .intro img {
-  max-width: 600px;
-  width: 100%;      
-  height: auto;      
-  display: block;
-  margin-top: 20px; 
-}
-
-.intro h1 {
-  margin: 0 0 20px 0;
-  color: black;
-  font-weight: bold;
-}
-
-.intro p {
-  max-width: 800px;
-  margin-top: 20px;
-}
-
-/******************************
-       SCRAPBOOK LAYOUT
-******************************/
-.scrapbook-bg {
-  background-color: #f5f4f0; /* Soft, warm album page tone */
-  padding: 40px 20px;
-}
-
-.scrapbook-flex {
-  display: flex;           
-  flex-wrap: wrap;         
-  gap: 25px;               
-  justify-content: center; 
-  padding: 20px 0;
-}
-
-/* 1. Base Polaroid Wrapper Styles */
-.polaroid {
-    background-color: white;
-    padding: 15px 15px 30px 15px; /* Top, sides, and a larger bottom pocket for captions */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    display: inline-block;
-    transition: transform 0.3s ease;
-    
-    /* CRITICAL FIX: Remove any fixed 'width: 300px' from here! */
-    /* Instead, let the wrapper shrink down to fit the specific size class assigned to it */
-    width: auto; 
-}
-
-/* 2. Style the images inside to fill their specific size container */
-.polaroid img {
+    max-width: 600px;
     width: 100%;
     height: auto;
     display: block;
+    margin-top: 20px;
 }
 
-/* ==========================================
-   3. THE SIZE MODIFIERS (AS ADDED BY YOUR JS)
-   ========================================== */
+.intro h1 {
+    margin: 0 0 20px 0;
+    color: black;
+    font-weight: bold;
+}
+
+.intro p {
+    max-width: 800px;
+    margin-top: 20px;
+}
+
+/****************************** SCRAPBOOK LAYOUT ******************************/
+.scrapbook-bg {
+    background-color: #f5f4f0; /* Soft, warm album page tone */
+    padding: 40px 20px;
+}
+
+.scrapbook-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+    padding: 20px 0;
+    align-items: flex-start; /* Prevents cards from stretching vertically */
+}
+
+/* Base Polaroid Wrapper Styles */
+.polaroid {
+    background-color: white;
+    padding: 15px 15px 30px 15px; /* Large bottom pocket for captions */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    display: inline-block;
+    transition: transform 0.3s ease;
+    box-sizing: border-box; 
+    width: auto;
+}
+
+/* Forces images to fill their specific size container */
+.polaroid img {
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+}
+
+/* Size Modifiers added dynamically by JS */
 .polaroid.size-small {
-    width: 200px;  /* Scales the border AND picture down together */
+    width: 200px !important;
 }
 
 .polaroid.size-medium {
-    width: 260px;  /* Normal medium scaling */
+    width: 260px !important;
 }
-
 
 .polaroid.size-large {
-    width: 320px;  /* Scales the border AND picture up together */
+    width: 320px !important;
 }
-
 
 .caption {
-  text-align: center;
-  margin-top: 12px;
-  margin-bottom: 0;
-  font-size: 0.95rem;
-  color: #444;
+    text-align: center;
+    margin-top: 12px;
+    margin-bottom: 0;
+    font-size: 0.95rem;
+    color: #444;
 }
 
-/* --- Organic Photo Pile Rotations --- */
+/* Organic Photo Pile Rotations */
 .tilt-left {
-  transform: rotate(-3deg);
+    transform: rotate(-3deg);
 }
 
 .tilt-right {
-  transform: rotate(3deg);
+    transform: rotate(3deg);
 }
 
 /* Interactive Hover Lift Frame Effect */
 .polaroid:hover {
-  transform: rotate(0deg) scale(1.05);
-  box-shadow: 5px 12px 22px rgba(0, 0, 0, 0.2);
-  z-index: 10;
+    transform: rotate(0deg) scale(1.05);
+    box-shadow: 5px 12px 22px rgba(0, 0, 0, 0.2);
+    z-index: 10;
 }
 
-/******************************
-      SCRAPBOOK PAGINATION
-******************************/
+/****************************** SCRAPBOOK PAGINATION ******************************/
 .pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  margin: 50px 0;
-  font-family: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 50px 0;
+    font-family: inherit;
 }
 
 .page-btn {
-  text-decoration: none;
-  color: #333333;
-  background-color: #ffffff;
-  padding: 10px 20px;
-  border-radius: 25px;
-  border: 1px solid #d3d3d3;
-  font-weight: bold;
-  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.05);
-  transition: all 0.2s ease;
-  cursor: pointer;
+    text-decoration: none;
+    color: #333333;
+    background-color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: 1px solid #d3d3d3;
+    font-weight: bold;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+    cursor: pointer;
 }
 
 .page-btn:hover {
-  background-color: #333333;
-  color: #ffffff;
-  transform: translateY(-2px);
-  box-shadow: 2px 6px 15px rgba(0, 0, 0, 0.1);
+    background-color: #333333;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 2px 6px 15px rgba(0, 0, 0, 0.1);
 }
 
 .page-btn:disabled {
-  background-color: #f0f0f0;
-  color: #cccccc;
-  border-color: #e0e0e0;
-  cursor: not-allowed;
-  transform: none !important;
-  box-shadow: none !important;
+    background-color: #f0f0f0;
+    color: #cccccc;
+    border-color: #e0e0e0;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
 }
 
 .current-page {
-  color: #888888;
-  font-weight: bold;
-}
-/*==============
-Vacation
-==============*/
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f6f8;
-    color: #333;
-    margin: 0;
-    padding: 20px;
+    color: #888888;
+    font-weight: bold;
 }
 
-header {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-header h1 {
-    color: #2c3e50;
-    font-weight: 600;
-}
-
-/* Grid Layout */
+/****************************** VACATION GRID ******************************/
 .preview-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -536,7 +235,6 @@ header h1 {
     margin: 0 auto;
 }
 
-/* Interactive Cards */
 .preview-card {
     background: #ffffff;
     border-radius: 12px;
@@ -556,7 +254,7 @@ header h1 {
     height: 200px;
     background-size: cover;
     background-position: center;
-    background-color: #e0e0e0; /* Fallback */
+    background-color: #e0e0e0;
 }
 
 .card-info {
@@ -574,37 +272,36 @@ header h1 {
     color: #7f8c8d;
     font-size: 0.95rem;
 }
-/******************************
-      MOBILE & RESPONSIVE
-******************************/
+
+/****************************** MOBILE & RESPONSIVE ******************************/
 @media screen and (max-width: 950px) {
-  nav {
-    flex-direction: column; 
-    height: auto;
-    padding: 15px 10px;
-    gap: 15px;
-  }
-
-  .menu {
-    display: flex !important;
-    flex-direction: row;
-    flex-wrap: wrap; /* Fixed spelling typo here */
-    position: static;
-    justify-content: center;
-    gap: 15px;              
-    margin-top: 15px;
-    width: 100%;
-    background-color: transparent;
-    border-top: 1px solid #ddd;
-    padding-bottom: 20px;
-    list-style: none !important;
-    z-index: 1500;
-  }
-
-  .menu li {
-    width: 100%;
-    text-align: center;
-    padding: 10px 0;
-    list-style: none !important;
-  }
+    nav {
+        flex-direction: column;
+        height: auto;
+        padding: 15px 10px;
+        gap: 15px;
+    }
+    
+    .menu {
+        display: flex !important;
+        flex-direction: row;
+        flex-wrap: wrap;
+        position: static;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 15px;
+        width: 100%;
+        background-color: transparent;
+        border-top: 1px solid #ddd;
+        padding-bottom: 20px;
+        list-style: none !important;
+        z-index: 1500;
+    }
+    
+    .menu li {
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+        list-style: none !important;
+    }
 }
