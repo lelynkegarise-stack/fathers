@@ -110,7 +110,7 @@ const allScrapbooks = {
          { src: 'images/alaska7.png', caption: '' },
          { src: 'images/alaska8.png', caption: 'Dog Sled' },
          { src: 'images/alaska9.png', caption: '' },
-         { src: 'images/alaska10.png', caption: 'Grizzle Bear'' },
+         { src: 'images/alaska10.png', caption: 'Grizzle Bear' },
          { src: 'images/alaska11.png', caption: 'Besties' },
          { src: 'images/alaska12.png', caption: 'Suited Up' },
          { src: 'images/alaska13.png', caption: 'Desert' },
