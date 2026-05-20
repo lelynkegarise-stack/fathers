@@ -220,7 +220,7 @@ const allScrapbooks = {
          { src: 'images/cabo19.png', caption: '' },
          { src: 'images/cabo20.png', caption: '' }
         ],
-          "hawaii":[
+    "hawaii":[
             { src: 'images/hawaii1.png', caption: '' },
             { src: 'images/hawaii2.png', caption: '' },
             { src: 'images/hawaii3.png', caption: '' },
@@ -233,7 +233,7 @@ const allScrapbooks = {
             { src: 'images/hawaii10.png', caption: '' }
 
               ],
-          "ireland":[
+    "ireland":[
             { src: 'images/ireland1.png', caption: '' },
             { src: 'images/ireland2.png', caption: '' },
             { src: 'images/ireland3.png', caption: '' },
@@ -245,7 +245,7 @@ const allScrapbooks = {
 
 
               ],
-          "newyork":[
+    "newyork":[
            // { src: 'images/newyork1.png', caption: '' },
             { src: 'images/newyork2.png', caption: '' },
             { src: 'images/newyork3.png', caption: '' },
@@ -261,8 +261,6 @@ const allScrapbooks = {
             { src: 'images/newyork13.png', caption: 'Statue of Liberty 2016' },
             { src: 'images/newyork14.png', caption: '2024' },
             { src: 'images/newyork15.png', caption: '2016' }
-
-
               ],
     "vacation": [
         { src: 'images/mountain1.png', caption: 'Morning Hike' },
