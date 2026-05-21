@@ -78,15 +78,15 @@ const allScrapbooks = {
 
     ],
     "tennessee": [
-        //{ src: 'images/tennessee1.png', caption: 'Make Way' }, 
+        { src: 'images/tennessee1.png', caption: 'Make Way' }, 
         { src: 'images/tennessee2.png', caption: 'Mountians' }, // Fixed filename spelling
         { src: 'images/tennessee3.png', caption: '' },
-        //{ src: 'images/tennessee4.png', caption: ' Paula Dean Wait' },
+        { src: 'images/tennessee4.png', caption: ' Paula Dean Wait' },
         { src: 'images/tennessee5.png', caption: 'Christmas Tree' },
-        //{ src: 'images/tennessee6.png', caption: 'Cabin Getaway' },
+        { src: 'images/tennessee6.png', caption: 'Cabin Getaway' },
         { src: 'images/tennessee7.png', caption: '' },
         { src: 'images/tennessee8.png', caption: '' },
-        //{ src: 'images/tennessee9.png', caption: '' },
+        { src: 'images/tennessee9.png', caption: '' },
         { src: 'images/tennessee10.png', caption: '' },
         { src: 'images/tennessee11.png', caption: '' },
         { src: 'images/tennessee12.png', caption: '' },
