@@ -179,7 +179,7 @@ const allScrapbooks = {
     ],
     "beach":[
         { src: 'images/beach1.png', caption: '2019' },
-        //{ src: 'images/beach2.png', caption: 'Fish!' },
+        { src: 'images/beach2.png', caption: 'Fish!' },
         { src: 'images/beach3.png', caption: 'Friends 2025' },
         { src: 'images/beach4.png', caption: 'Relaxing' },
         { src: 'images/beach5.png', caption: '2009' },
@@ -196,20 +196,20 @@ const allScrapbooks = {
         { src: 'images/beach16.png', caption: 'Cargo Ship' },
         { src: 'images/beach17.png', caption: 'Fishing' },
         { src: 'images/beach18.png', caption: 'Big Catch' },
-        { src: 'images/beach19.png', caption: '' }
+        { src: 'images/beach20.png', caption: '' }
     ],
     "cabo": [
          { src: 'images/cabo1.png', caption: '' },
-         //{ src: 'images/cabo2.png', caption: '' },
+         { src: 'images/cabo2.png', caption: '' },
          { src: 'images/cabo3.png', caption: '' },
          { src: 'images/cabo4.png', caption: '' },
-         //{ src: 'images/cabo5.png', caption: '' },
+         { src: 'images/cabo5.png', caption: '' },
          { src: 'images/cabo6.png', caption: '' },
          { src: 'images/cabo7.png', caption: 'Yum!' },
          { src: 'images/cabo8.png', caption: 'Cabo Wabo' },
          { src: 'images/cabo9.png', caption: 'Towel Animal!' },
          { src: 'images/cabo10..png', caption: 'Huge Lizard' },
-         //{ src: 'images/cabo11.png', caption: '' },
+         { src: 'images/cabo11.png', caption: '' },
          { src: 'images/cabo12.png', caption: 'Camel Ride' },
          { src: 'images/cabo13.png', caption: 'ATV' },
          { src: 'images/cabo14.png', caption: 'Camels Wages' },
