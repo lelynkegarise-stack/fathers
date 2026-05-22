@@ -101,6 +101,7 @@ const allScrapbooks = {
         { src: 'images/tennessee21.png', caption: '' }
     ],
     "alaska": [
+        {src: 'images/IMG_5842.mp4', caption: 'Hunting'},
          { src: 'images/alaska1.png', caption: 'Nap Time' },
          { src: 'images/alaska2.png', caption: 'Huskies' },
          { src: 'images/alaska3.png', caption: 'On the Water' },
