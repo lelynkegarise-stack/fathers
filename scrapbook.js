@@ -316,7 +316,6 @@ const allScrapbooks = {
              { src: 'images/hondorus7.png', caption: '' },
              { src: 'images/hondorus8.png', caption: '' },
              { src: 'images/hondorus9.png', caption: '' },
-             { src: 'images/hondorus10.png', caption: '' },
 
 
         ],
