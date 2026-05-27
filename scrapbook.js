@@ -17,7 +17,20 @@ const allScrapbooks = {
         { src: 'images/family14.png', caption: 'Christmas PJ Party' },
         { src: 'images/family15.png', caption: 'Family Dinner' },
         { src: 'images/family16.png', caption: 'Christmas Church 2025' },
-        { src: 'images/family17.png', caption: 'Happy Couple' }
+        { src: 'images/family17.png', caption: 'Happy Couple' },
+        { src: 'images/family18.png', caption: '' },
+        { src: 'images/family19.png', caption: 'Mini gold' },
+        { src: 'images/family20.png', caption: 'Christmas' },
+        { src: 'images/family21.png', caption: 'Scooby doo' },
+        { src: 'images/family22.png', caption: '' },
+        { src: 'images/family23.png', caption: 'Before the chair broke' },
+        { src: 'images/family24.png', caption: 'River Crew' },
+        { src: 'images/family25.png', caption: 'Harlem Globe Trotters' },
+        { src: 'images/family26.png', caption: 'Escape Room' },
+        { src: 'images/family27.png', caption: '' },
+        { src: 'images/family28.png', caption: 'Penn State' },
+        { src: 'images/family29.png', caption: 'Dicks Market' },
+
     ],
     "nicaragua": [
         { src: 'images/nicaragua1.png', caption: 'Ogre' },
