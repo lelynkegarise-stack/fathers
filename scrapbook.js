@@ -29,7 +29,7 @@ const allScrapbooks = {
         { src: 'images/family26.png', caption: 'Escape Room' },
         { src: 'images/family27.png', caption: '' },
         { src: 'images/family28.png', caption: 'Penn State' },
-        { src: 'images/family29.png', caption: 'Dicks Market' },
+        { src: 'images/family29.png', caption: 'Dicks Market' }
 
     ],
     "nicaragua": [
